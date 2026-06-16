@@ -7,11 +7,98 @@
   <meta name="description" content="blancは最高級アクリル素材を使用した高級ジャグジー浴槽。Clarte・Opaline・Horizon・Soleilの4スタイルをラインアップ。¥790,000〜">
   <link rel="stylesheet" href="../assets/css/style.css">
   <style>
-    .page-hero-bg { background: linear-gradient(160deg, #0d0d1a 0%, #1a1a2e 50%, #0a0a0a 100%) !important; }
     .card-clarte { background: linear-gradient(160deg, #12122a, #0a0a14); }
     .card-opaline { background: linear-gradient(160deg, #1a1a2a, #0d0d1a); }
     .card-horizon { background: linear-gradient(160deg, #0a1220, #0a0a0a); }
     .card-soleil  { background: linear-gradient(160deg, #1a1408, #0a0a0a); }
+
+    /* ── Hero Slider ── */
+    .hero-slider {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .hero-slide {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 1.2s ease;
+    }
+    .hero-slide.active { opacity: 1; }
+    .hero-slide::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.55) 100%);
+    }
+
+    /* dots */
+    .hero-dots {
+      position: absolute;
+      bottom: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+      z-index: 2;
+    }
+    .hero-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.4);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: none;
+      padding: 0;
+    }
+    .hero-dot.active {
+      background: var(--color-accent);
+      width: 24px;
+      border-radius: 3px;
+    }
+
+    /* arrows */
+    .hero-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 2;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #fff;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(4px);
+    }
+    .hero-arrow:hover { background: rgba(201,168,76,0.3); border-color: var(--color-accent); }
+    .hero-arrow-prev { left: 32px; }
+    .hero-arrow-next { right: 32px; }
+
+    /* progress bar */
+    .hero-progress {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 2px;
+      background: var(--color-accent);
+      width: 0%;
+      z-index: 2;
+      transition: none;
+    }
+    .hero-progress.running {
+      transition: width 5s linear;
+      width: 100%;
+    }
   </style>
 </head>
 <body>
@@ -39,16 +126,36 @@
   <a href="../contact/index.html">Contact</a>
 </div>
 
-<!-- ページヒーロー -->
-<section class="page-hero">
-  <div class="page-hero-bg"></div>
-  <div class="container">
+<!-- ページヒーロー スライダー -->
+<section class="page-hero" style="height:100vh; min-height:600px;">
+  <div class="hero-slider">
+    <div class="hero-slide active" style="background-image:url('../assets/images/blanc/hero-1.png');"></div>
+    <div class="hero-slide" style="background-image:url('../assets/images/blanc/hero-2.png');"></div>
+    <div class="hero-slide" style="background-image:url('../assets/images/blanc/hero-3.png');"></div>
+    <div class="hero-slide" style="background-image:url('../assets/images/blanc/hero-4.png');"></div>
+    <div class="hero-slide" style="background-image:url('../assets/images/blanc/hero-5.png');"></div>
+  </div>
+
+  <div class="container" style="position:relative; z-index:1; height:100%; display:flex; align-items:flex-end; padding-bottom:120px;">
     <div class="page-hero-content">
       <p class="page-hero-label">Luxury Jacuzzi</p>
       <h1 class="page-hero-title">blanc</h1>
       <p class="page-hero-sub">光と水と静寂が溶け合う、<br>ワンランク上のバス体験へ。</p>
     </div>
   </div>
+
+  <button class="hero-arrow hero-arrow-prev" aria-label="前へ">&#8592;</button>
+  <button class="hero-arrow hero-arrow-next" aria-label="次へ">&#8594;</button>
+
+  <div class="hero-dots">
+    <button class="hero-dot active" data-index="0"></button>
+    <button class="hero-dot" data-index="1"></button>
+    <button class="hero-dot" data-index="2"></button>
+    <button class="hero-dot" data-index="3"></button>
+    <button class="hero-dot" data-index="4"></button>
+  </div>
+
+  <div class="hero-progress" id="heroProgress"></div>
 </section>
 
 <!-- ブランドコンセプト -->
@@ -337,5 +444,50 @@
 </footer>
 
 <script src="../assets/js/main.js"></script>
+<script>
+  (function () {
+    const slides = document.querySelectorAll('.hero-slide');
+    const dots   = document.querySelectorAll('.hero-dot');
+    const prev   = document.querySelector('.hero-arrow-prev');
+    const next   = document.querySelector('.hero-arrow-next');
+    const bar    = document.getElementById('heroProgress');
+    let current  = 0;
+    let timer;
+
+    function goTo(n) {
+      slides[current].classList.remove('active');
+      dots[current].classList.remove('active');
+      current = (n + slides.length) % slides.length;
+      slides[current].classList.add('active');
+      dots[current].classList.add('active');
+      resetBar();
+    }
+
+    function resetBar() {
+      bar.classList.remove('running');
+      bar.style.width = '0%';
+      void bar.offsetWidth; // reflow
+      bar.classList.add('running');
+    }
+
+    function startAuto() {
+      clearInterval(timer);
+      timer = setInterval(() => goTo(current + 1), 5000);
+    }
+
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        goTo(+dot.dataset.index);
+        startAuto();
+      });
+    });
+
+    prev.addEventListener('click', () => { goTo(current - 1); startAuto(); });
+    next.addEventListener('click', () => { goTo(current + 1); startAuto(); });
+
+    resetBar();
+    startAuto();
+  })();
+</script>
 </body>
 </html>
