@@ -73,6 +73,66 @@
     @media (max-width: 1024px) { .ff-grid { grid-template-columns: repeat(3, 1fr); } }
     @media (max-width: 640px)  { .ff-grid { grid-template-columns: repeat(2, 1fr); } }
 
+    /* ── Color Slider (3モデル用) ── */
+    .ff-slider-wrap { position: relative; overflow: hidden; }
+    .ff-slide-img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: contain;
+      background: var(--color-surface);
+      padding: 20px;
+      display: none;
+    }
+    .ff-slide-img.active { display: block; }
+    .ff-slide-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.9);
+      border: 1px solid var(--color-border);
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 14px;
+      color: var(--color-text);
+      transition: all 0.2s ease;
+      z-index: 1;
+      line-height: 1;
+    }
+    .ff-slide-btn:hover { background: var(--color-accent); color: #fff; border-color: var(--color-accent); }
+    .ff-slide-prev-btn { left: 8px; }
+    .ff-slide-next-btn { right: 8px; }
+    .ff-slide-dots-wrap {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      padding: 8px 0;
+      border-top: 1px solid var(--color-border);
+      background: var(--color-surface);
+    }
+    .ff-slide-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--color-border);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: none;
+      padding: 0;
+    }
+    .ff-slide-dot.active { background: var(--color-accent); width: 16px; border-radius: 3px; }
+    .ff-color-name {
+      font-size: 11px;
+      color: var(--color-muted);
+      margin-top: 4px;
+      font-family: var(--font-en);
+      letter-spacing: 0.1em;
+    }
+
     /* ── Faucet Cards ── */
     .faucet-grid {
       display: grid;
@@ -783,48 +843,72 @@
         </div>
       </div>
 
-      <!-- F-COLUMNA（4色） -->
-      <div class="ff-card reveal reveal-delay-3">
-        <img class="ff-main-img" src="../assets/images/blanc/floor-faucet/columna-ms.png" alt="F-COLUMNA コルムナ">
-        <div class="ff-variants">
-          <img class="ff-variant-img" src="../assets/images/blanc/floor-faucet/columna-ms.png" alt="マットシルバー">
-          <img class="ff-variant-img" src="../assets/images/blanc/floor-faucet/columna-s.png"  alt="シルバー">
-          <img class="ff-variant-img" src="../assets/images/blanc/floor-faucet/columna-g.png"  alt="ゴールド">
-          <img class="ff-variant-img" src="../assets/images/blanc/floor-faucet/columna-b.png"  alt="ブラック">
+      <!-- F-COLUMNA（4色・スライダー） -->
+      <div class="ff-card ff-slider-card reveal reveal-delay-3">
+        <div class="ff-slider-wrap">
+          <img class="ff-slide-img active" src="../assets/images/blanc/floor-faucet/columna-ms.png" data-label="マットシルバー" alt="マットシルバー">
+          <img class="ff-slide-img" src="../assets/images/blanc/floor-faucet/columna-s.png"  data-label="シルバー"       alt="シルバー">
+          <img class="ff-slide-img" src="../assets/images/blanc/floor-faucet/columna-g.png"  data-label="ゴールド"       alt="ゴールド">
+          <img class="ff-slide-img" src="../assets/images/blanc/floor-faucet/columna-b.png"  data-label="ブラック"       alt="ブラック">
+          <button class="ff-slide-btn ff-slide-prev-btn">&#8249;</button>
+          <button class="ff-slide-btn ff-slide-next-btn">&#8250;</button>
+        </div>
+        <div class="ff-slide-dots-wrap">
+          <button class="ff-slide-dot active"></button>
+          <button class="ff-slide-dot"></button>
+          <button class="ff-slide-dot"></button>
+          <button class="ff-slide-dot"></button>
         </div>
         <div class="ff-info">
           <p class="ff-model">Floor Faucet / 4 Colors</p>
           <p class="ff-name">F-COLUMNA　コルムナ</p>
+          <p class="ff-color-name">マットシルバー</p>
         </div>
       </div>
 
-      <!-- F-LOCUS（4色） -->
-      <div class="ff-card reveal reveal-delay-1">
-        <img class="ff-main-img" src="../assets/images/blanc/floor-faucet/locus-ms.png" alt="F-LOCUS ロクス">
-        <div class="ff-variants">
-          <img class="ff-variant-img" src="../assets/images/blanc/floor-faucet/locus-ms.png" alt="マットシルバー">
-          <img class="ff-variant-img" src="../assets/images/blanc/floor-faucet/locus-s.png"  alt="シルバー">
-          <img class="ff-variant-img" src="../assets/images/blanc/floor-faucet/locus-g.png"  alt="ゴールド">
-          <img class="ff-variant-img" src="../assets/images/blanc/floor-faucet/locus-b.png"  alt="ブラック">
+      <!-- F-LOCUS（4色・スライダー） -->
+      <div class="ff-card ff-slider-card reveal reveal-delay-1">
+        <div class="ff-slider-wrap">
+          <img class="ff-slide-img active" src="../assets/images/blanc/floor-faucet/locus-ms.png" data-label="マットシルバー" alt="マットシルバー">
+          <img class="ff-slide-img" src="../assets/images/blanc/floor-faucet/locus-s.png"  data-label="シルバー"       alt="シルバー">
+          <img class="ff-slide-img" src="../assets/images/blanc/floor-faucet/locus-g.png"  data-label="ゴールド"       alt="ゴールド">
+          <img class="ff-slide-img" src="../assets/images/blanc/floor-faucet/locus-b.png"  data-label="ブラック"       alt="ブラック">
+          <button class="ff-slide-btn ff-slide-prev-btn">&#8249;</button>
+          <button class="ff-slide-btn ff-slide-next-btn">&#8250;</button>
+        </div>
+        <div class="ff-slide-dots-wrap">
+          <button class="ff-slide-dot active"></button>
+          <button class="ff-slide-dot"></button>
+          <button class="ff-slide-dot"></button>
+          <button class="ff-slide-dot"></button>
         </div>
         <div class="ff-info">
           <p class="ff-model">Floor Faucet / 4 Colors</p>
           <p class="ff-name">F-LOCUS　ロクス</p>
+          <p class="ff-color-name">マットシルバー</p>
         </div>
       </div>
 
-      <!-- F-AETERNA（4色） -->
-      <div class="ff-card reveal reveal-delay-2">
-        <img class="ff-main-img" src="../assets/images/blanc/floor-faucet/aeterna-s.png" alt="F-AETERNA エテルナ">
-        <div class="ff-variants">
-          <img class="ff-variant-img" src="../assets/images/blanc/floor-faucet/aeterna-s.png"  alt="シルバー">
-          <img class="ff-variant-img" src="../assets/images/blanc/floor-faucet/aeterna-g.png"  alt="ゴールド">
-          <img class="ff-variant-img" src="../assets/images/blanc/floor-faucet/aeterna-gr.png" alt="グレー">
-          <img class="ff-variant-img" src="../assets/images/blanc/floor-faucet/aeterna-b.png"  alt="ブラック">
+      <!-- F-AETERNA（4色・スライダー） -->
+      <div class="ff-card ff-slider-card reveal reveal-delay-2">
+        <div class="ff-slider-wrap">
+          <img class="ff-slide-img active" src="../assets/images/blanc/floor-faucet/aeterna-s.png"  data-label="シルバー" alt="シルバー">
+          <img class="ff-slide-img" src="../assets/images/blanc/floor-faucet/aeterna-g.png"  data-label="ゴールド" alt="ゴールド">
+          <img class="ff-slide-img" src="../assets/images/blanc/floor-faucet/aeterna-gr.png" data-label="グレー"   alt="グレー">
+          <img class="ff-slide-img" src="../assets/images/blanc/floor-faucet/aeterna-b.png"  data-label="ブラック" alt="ブラック">
+          <button class="ff-slide-btn ff-slide-prev-btn">&#8249;</button>
+          <button class="ff-slide-btn ff-slide-next-btn">&#8250;</button>
+        </div>
+        <div class="ff-slide-dots-wrap">
+          <button class="ff-slide-dot active"></button>
+          <button class="ff-slide-dot"></button>
+          <button class="ff-slide-dot"></button>
+          <button class="ff-slide-dot"></button>
         </div>
         <div class="ff-info">
           <p class="ff-model">Floor Faucet / 4 Colors</p>
           <p class="ff-name">F-AETERNA　エテルナ</p>
+          <p class="ff-color-name">シルバー</p>
         </div>
       </div>
 
@@ -907,6 +991,28 @@
 </footer>
 
 <script src="../assets/js/main.js"></script>
+<script>
+  // ── カラースライダー（立水栓 3モデル用）──
+  document.querySelectorAll('.ff-slider-card').forEach(card => {
+    const imgs      = card.querySelectorAll('.ff-slide-img');
+    const dots      = card.querySelectorAll('.ff-slide-dot');
+    const colorName = card.querySelector('.ff-color-name');
+    let cur = 0;
+
+    function slideTo(n) {
+      imgs[cur].classList.remove('active');
+      dots[cur].classList.remove('active');
+      cur = (n + imgs.length) % imgs.length;
+      imgs[cur].classList.add('active');
+      dots[cur].classList.add('active');
+      if (colorName) colorName.textContent = imgs[cur].dataset.label;
+    }
+
+    card.querySelector('.ff-slide-prev-btn').addEventListener('click', () => slideTo(cur - 1));
+    card.querySelector('.ff-slide-next-btn').addEventListener('click', () => slideTo(cur + 1));
+    dots.forEach((dot, i) => dot.addEventListener('click', () => slideTo(i)));
+  });
+</script>
 <script>
   (function () {
     const slides      = document.querySelectorAll('.hero-slide');
