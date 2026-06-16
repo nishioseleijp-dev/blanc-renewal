@@ -12,6 +12,67 @@
     .card-horizon { background: linear-gradient(160deg, #0a1220, #0a0a0a); }
     .card-soleil  { background: linear-gradient(160deg, #1a1408, #0a0a0a); }
 
+    /* ── Floor Faucet Cards ── */
+    .ff-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+    }
+    .ff-card {
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      overflow: hidden;
+      transition: box-shadow var(--transition-fast);
+    }
+    .ff-card:hover { box-shadow: 0 4px 24px rgba(0,0,0,0.08); }
+    .ff-main-img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: contain;
+      background: var(--color-surface);
+      padding: 20px;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .ff-card:hover .ff-main-img { transform: scale(1.04); }
+    .ff-variants {
+      display: flex;
+      gap: 2px;
+      background: var(--color-border);
+      border-top: 1px solid var(--color-border);
+    }
+    .ff-variant-img {
+      flex: 1;
+      aspect-ratio: 1;
+      object-fit: contain;
+      background: var(--color-surface);
+      padding: 8px;
+      display: block;
+      transition: opacity 0.3s ease;
+    }
+    .ff-variant-img:hover { opacity: 0.75; }
+    .ff-info {
+      padding: 16px 20px;
+      border-top: 1px solid var(--color-border);
+    }
+    .ff-model {
+      font-family: var(--font-en);
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: 4px;
+    }
+    .ff-name {
+      font-family: var(--font-serif);
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--color-text);
+      letter-spacing: 0.05em;
+    }
+    @media (max-width: 1024px) { .ff-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 640px)  { .ff-grid { grid-template-columns: repeat(2, 1fr); } }
+
     /* ── Faucet Cards ── */
     .faucet-grid {
       display: grid;
@@ -643,6 +704,111 @@
           <p class="faucet-name">D-VIRTUS　ヴィルトゥス</p>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- 立水栓 -->
+<section class="section" style="border-top:1px solid var(--color-border);">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="section-label">Option</p>
+      <h2 class="section-title">立水栓</h2>
+      <div class="divider"></div>
+      <p class="section-desc">8種類の立水栓をラインアップ。カラーバリアントも豊富にご用意しています。</p>
+    </div>
+    <div class="ff-grid">
+
+      <!-- F-MONS -->
+      <div class="ff-card reveal reveal-delay-1">
+        <img class="ff-main-img" src="../assets/images/blanc/floor-faucet/mons.jpg" alt="F-MONS モンス">
+        <div class="ff-info">
+          <p class="ff-model">Floor Faucet</p>
+          <p class="ff-name">F-MONS　モンス</p>
+        </div>
+      </div>
+
+      <!-- F-ORIGO -->
+      <div class="ff-card reveal reveal-delay-2">
+        <img class="ff-main-img" src="../assets/images/blanc/floor-faucet/origo.png" alt="F-ORIGO オリゴ">
+        <div class="ff-info">
+          <p class="ff-model">Floor Faucet</p>
+          <p class="ff-name">F-ORIGO　オリゴ</p>
+        </div>
+      </div>
+
+      <!-- F-SOLUM -->
+      <div class="ff-card reveal reveal-delay-3">
+        <img class="ff-main-img" src="../assets/images/blanc/floor-faucet/solum.png" alt="F-SOLUM ソラム">
+        <div class="ff-info">
+          <p class="ff-model">Floor Faucet</p>
+          <p class="ff-name">F-SOLUM　ソラム</p>
+        </div>
+      </div>
+
+      <!-- F-VALDUS -->
+      <div class="ff-card reveal reveal-delay-1">
+        <img class="ff-main-img" src="../assets/images/blanc/floor-faucet/valdus.png" alt="F-VALDUS ヴァルドゥス">
+        <div class="ff-info">
+          <p class="ff-model">Floor Faucet</p>
+          <p class="ff-name">F-VALDUS　ヴァルドゥス</p>
+        </div>
+      </div>
+
+      <!-- F-NOVA -->
+      <div class="ff-card reveal reveal-delay-2">
+        <img class="ff-main-img" src="../assets/images/blanc/floor-faucet/nova.png" alt="F-NOVA ノーヴァ">
+        <div class="ff-info">
+          <p class="ff-model">Floor Faucet</p>
+          <p class="ff-name">F-NOVA　ノーヴァ</p>
+        </div>
+      </div>
+
+      <!-- F-COLUMNA（4色） -->
+      <div class="ff-card reveal reveal-delay-3">
+        <img class="ff-main-img" src="../assets/images/blanc/floor-faucet/columna-ms.png" alt="F-COLUMNA コルムナ">
+        <div class="ff-variants">
+          <img class="ff-variant-img" src="../assets/images/blanc/floor-faucet/columna-ms.png" alt="マットシルバー">
+          <img class="ff-variant-img" src="../assets/images/blanc/floor-faucet/columna-s.png"  alt="シルバー">
+          <img class="ff-variant-img" src="../assets/images/blanc/floor-faucet/columna-g.png"  alt="ゴールド">
+          <img class="ff-variant-img" src="../assets/images/blanc/floor-faucet/columna-b.png"  alt="ブラック">
+        </div>
+        <div class="ff-info">
+          <p class="ff-model">Floor Faucet / 4 Colors</p>
+          <p class="ff-name">F-COLUMNA　コルムナ</p>
+        </div>
+      </div>
+
+      <!-- F-LOCUS（4色） -->
+      <div class="ff-card reveal reveal-delay-1">
+        <img class="ff-main-img" src="../assets/images/blanc/floor-faucet/locus-ms.png" alt="F-LOCUS ロクス">
+        <div class="ff-variants">
+          <img class="ff-variant-img" src="../assets/images/blanc/floor-faucet/locus-ms.png" alt="マットシルバー">
+          <img class="ff-variant-img" src="../assets/images/blanc/floor-faucet/locus-s.png"  alt="シルバー">
+          <img class="ff-variant-img" src="../assets/images/blanc/floor-faucet/locus-g.png"  alt="ゴールド">
+          <img class="ff-variant-img" src="../assets/images/blanc/floor-faucet/locus-b.png"  alt="ブラック">
+        </div>
+        <div class="ff-info">
+          <p class="ff-model">Floor Faucet / 4 Colors</p>
+          <p class="ff-name">F-LOCUS　ロクス</p>
+        </div>
+      </div>
+
+      <!-- F-AETERNA（4色） -->
+      <div class="ff-card reveal reveal-delay-2">
+        <img class="ff-main-img" src="../assets/images/blanc/floor-faucet/aeterna-s.png" alt="F-AETERNA エテルナ">
+        <div class="ff-variants">
+          <img class="ff-variant-img" src="../assets/images/blanc/floor-faucet/aeterna-s.png"  alt="シルバー">
+          <img class="ff-variant-img" src="../assets/images/blanc/floor-faucet/aeterna-g.png"  alt="ゴールド">
+          <img class="ff-variant-img" src="../assets/images/blanc/floor-faucet/aeterna-gr.png" alt="グレー">
+          <img class="ff-variant-img" src="../assets/images/blanc/floor-faucet/aeterna-b.png"  alt="ブラック">
+        </div>
+        <div class="ff-info">
+          <p class="ff-model">Floor Faucet / 4 Colors</p>
+          <p class="ff-name">F-AETERNA　エテルナ</p>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
