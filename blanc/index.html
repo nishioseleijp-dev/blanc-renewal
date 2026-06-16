@@ -12,6 +12,63 @@
     .card-horizon { background: linear-gradient(160deg, #0a1220, #0a0a0a); }
     .card-soleil  { background: linear-gradient(160deg, #1a1408, #0a0a0a); }
 
+    /* ── Faucet Cards ── */
+    .faucet-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+    .faucet-card {
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      overflow: hidden;
+      transition: box-shadow var(--transition-fast);
+    }
+    .faucet-card:hover {
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    }
+    .faucet-images {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--color-border);
+    }
+    .faucet-img {
+      aspect-ratio: 1;
+      object-fit: contain;
+      background: var(--color-surface);
+      padding: 16px;
+      width: 100%;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .faucet-card:hover .faucet-img { transform: scale(1.04); }
+    .faucet-info {
+      padding: 20px 24px;
+      border-top: 1px solid var(--color-border);
+    }
+    .faucet-model {
+      font-family: var(--font-en);
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: 6px;
+    }
+    .faucet-name {
+      font-family: var(--font-serif);
+      font-size: 17px;
+      font-weight: 300;
+      color: var(--color-text);
+      letter-spacing: 0.05em;
+    }
+    @media (max-width: 768px) {
+      .faucet-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 480px) {
+      .faucet-grid { grid-template-columns: 1fr; }
+    }
+
     /* ── Hero Slider ── */
     .hero-slider {
       position: absolute;
@@ -510,6 +567,80 @@
           <div class="lineup-card-actions">
             <a href="../contact/index.html" class="btn btn-ghost">お問い合わせ</a>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 水栓 -->
+<section class="section" style="background:var(--color-surface); border-top:1px solid var(--color-border);">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="section-label">Option</p>
+      <h2 class="section-title">水栓</h2>
+      <div class="divider"></div>
+      <p class="section-desc">デザイン性と機能性を兼ね備えた6種類の水栓をご用意。浴槽スタイルに合わせてお選びいただけます。</p>
+    </div>
+    <div class="faucet-grid">
+      <div class="faucet-card reveal reveal-delay-1">
+        <div class="faucet-images">
+          <img class="faucet-img" src="../assets/images/blanc/faucet/gema.png" alt="D-GEMA ゲマ">
+          <img class="faucet-img" src="../assets/images/blanc/faucet/gema-front.png" alt="D-GEMA ゲマ 正面">
+        </div>
+        <div class="faucet-info">
+          <p class="faucet-model">Faucet</p>
+          <p class="faucet-name">D-GEMA　ゲマ</p>
+        </div>
+      </div>
+      <div class="faucet-card reveal reveal-delay-2">
+        <div class="faucet-images">
+          <img class="faucet-img" src="../assets/images/blanc/faucet/manus.png" alt="D-MANUS マヌス">
+          <img class="faucet-img" src="../assets/images/blanc/faucet/manus-front.png" alt="D-MANUS マヌス 正面">
+        </div>
+        <div class="faucet-info">
+          <p class="faucet-model">Faucet</p>
+          <p class="faucet-name">D-MANUS　マヌス</p>
+        </div>
+      </div>
+      <div class="faucet-card reveal reveal-delay-3">
+        <div class="faucet-images">
+          <img class="faucet-img" src="../assets/images/blanc/faucet/orbis.png" alt="D-ORBIS オルビス">
+          <img class="faucet-img" src="../assets/images/blanc/faucet/orbis-front.png" alt="D-ORBIS オルビス 正面">
+        </div>
+        <div class="faucet-info">
+          <p class="faucet-model">Faucet</p>
+          <p class="faucet-name">D-ORBIS　オルビス</p>
+        </div>
+      </div>
+      <div class="faucet-card reveal reveal-delay-1">
+        <div class="faucet-images">
+          <img class="faucet-img" src="../assets/images/blanc/faucet/rhythmus.png" alt="D-RHYTHMUS リュトミス">
+          <img class="faucet-img" src="../assets/images/blanc/faucet/rhythmus-front.png" alt="D-RHYTHMUS リュトミス 正面">
+        </div>
+        <div class="faucet-info">
+          <p class="faucet-model">Faucet</p>
+          <p class="faucet-name">D-RHYTHMUS　リュトミス</p>
+        </div>
+      </div>
+      <div class="faucet-card reveal reveal-delay-2">
+        <div class="faucet-images">
+          <img class="faucet-img" src="../assets/images/blanc/faucet/tactus.png" alt="D-TACTUS タクトゥス">
+          <img class="faucet-img" src="../assets/images/blanc/faucet/tactus-front.png" alt="D-TACTUS タクトゥス 正面">
+        </div>
+        <div class="faucet-info">
+          <p class="faucet-model">Faucet</p>
+          <p class="faucet-name">D-TACTUS　タクトゥス</p>
+        </div>
+      </div>
+      <div class="faucet-card reveal reveal-delay-3">
+        <div class="faucet-images">
+          <img class="faucet-img" src="../assets/images/blanc/faucet/virtus.png" alt="D-VIRTUS ヴィルトゥス">
+          <img class="faucet-img" src="../assets/images/blanc/faucet/virtus-front.png" alt="D-VIRTUS ヴィルトゥス 正面">
+        </div>
+        <div class="faucet-info">
+          <p class="faucet-model">Faucet</p>
+          <p class="faucet-name">D-VIRTUS　ヴィルトゥス</p>
         </div>
       </div>
     </div>
