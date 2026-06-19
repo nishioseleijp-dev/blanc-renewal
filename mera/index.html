@@ -7,6 +7,45 @@
   <meta name="description" content="meraはガス式屋外ファイヤーピット。炎のゆらぎが心に贅沢な余白をもたらす。¥400,000〜">
   <link rel="stylesheet" href="../assets/css/style.css">
   <style>
+    /* ── Lineup ── */
+    .mera-series { margin-bottom: 72px; }
+    .mera-series-label {
+      font-family: var(--font-en); font-size: 11px; letter-spacing: 0.3em;
+      text-transform: uppercase; color: var(--color-accent); margin-bottom: 8px;
+    }
+    .mera-series-title {
+      font-family: var(--font-serif); font-size: 26px; font-weight: 300;
+      color: var(--color-text); margin-bottom: 32px; padding-bottom: 16px;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .mera-model-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px;
+    }
+    .mera-model-card {
+      background: var(--color-white); border: 1px solid var(--color-border);
+      overflow: hidden;
+    }
+    .mera-model-imgs {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+      background: var(--color-border);
+    }
+    .mera-model-imgs img {
+      width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block;
+    }
+    .mera-model-info { padding: 24px 28px; }
+    .mera-model-num {
+      font-family: var(--font-en); font-size: 10px; letter-spacing: 0.25em;
+      color: var(--color-muted); text-transform: uppercase; margin-bottom: 6px;
+    }
+    .mera-model-name {
+      font-family: var(--font-serif); font-size: 20px; font-weight: 300;
+      color: var(--color-text); margin-bottom: 10px;
+    }
+    .mera-model-specs { font-size: 12px; color: var(--color-muted); line-height: 1.8; margin-bottom: 14px; }
+    .mera-model-price { font-family: var(--font-en); font-size: 18px; color: var(--color-text); font-weight: 500; }
+    .mera-model-price-note { font-size: 11px; color: var(--color-muted); margin-top: 2px; }
+    @media (max-width: 768px) { .mera-model-grid { grid-template-columns: 1fr; } }
+
     /* ── Hero Slider ── */
     .hero-slider { position: absolute; inset: 0; z-index: 0; }
     .hero-slide {
@@ -132,50 +171,130 @@
   <div class="container" style="padding-top:80px;">
     <div class="section-header reveal">
       <p class="section-label">Line Up</p>
-      <h2 class="section-title">3シリーズ展開</h2>
+      <h2 class="section-title">3シリーズ / 6モデル</h2>
       <div class="divider"></div>
     </div>
-    <div class="lineup-grid">
-      <div class="lineup-card reveal reveal-delay-1">
-        <div class="lineup-card-img" style="background:linear-gradient(135deg,#1a0808,#0a0a0a);">
-          <span style="position:relative;z-index:1;">Circular</span>
+
+    <!-- Circular -->
+    <div class="mera-series reveal">
+      <p class="mera-series-label">Series 01</p>
+      <h3 class="mera-series-title">Circular — 円形シリーズ</h3>
+      <div class="mera-model-grid">
+        <div class="mera-model-card reveal reveal-delay-1">
+          <div class="mera-model-imgs">
+            <img src="../assets/images/mera/cir901-1.png" alt="mera CIR901">
+            <img src="../assets/images/mera/cir901-2.png" alt="mera CIR901 detail">
+          </div>
+          <div class="mera-model-info">
+            <p class="mera-model-num">mera · Circular</p>
+            <h4 class="mera-model-name">CIR901</h4>
+            <p class="mera-model-specs">円形デザイン / GFRC＋ステンレス304<br>屋外設置対応 / ガス式</p>
+            <p class="mera-model-price">¥400,000</p>
+            <p class="mera-model-price-note">税別 / 設置工事費別途</p>
+            <div style="margin-top:20px;">
+              <a href="../contact/index.html" class="btn btn-ghost" style="font-size:12px; padding:10px 24px;">お問い合わせ</a>
+            </div>
+          </div>
         </div>
-        <p class="lineup-card-model">mera</p>
-        <h3 class="lineup-card-name">Circular</h3>
-        <p class="lineup-card-specs">円形デザイン / GFRC＋ステンレス304<br>CIR901 / CIR001</p>
-        <p class="lineup-card-price">¥400,000</p>
-        <p class="lineup-card-price-note">税別〜 / モデルにより異なります</p>
-        <div class="lineup-card-actions">
-          <a href="../contact/index.html" class="btn btn-ghost">お問い合わせ</a>
-        </div>
-      </div>
-      <div class="lineup-card reveal reveal-delay-2">
-        <div class="lineup-card-img" style="background:linear-gradient(135deg,#1a0808,#0a0a0a);">
-          <span style="position:relative;z-index:1;">Carré</span>
-        </div>
-        <p class="lineup-card-model">mera</p>
-        <h3 class="lineup-card-name">Carré</h3>
-        <p class="lineup-card-specs">正方形デザイン / GFRC＋ステンレス304<br>CAR008 / CAR218</p>
-        <p class="lineup-card-price">¥420,000</p>
-        <p class="lineup-card-price-note">税別〜 / モデルにより異なります</p>
-        <div class="lineup-card-actions">
-          <a href="../contact/index.html" class="btn btn-ghost">お問い合わせ</a>
-        </div>
-      </div>
-      <div class="lineup-card reveal reveal-delay-3">
-        <div class="lineup-card-img" style="background:linear-gradient(135deg,#1a0808,#0a0a0a);">
-          <span style="position:relative;z-index:1;">Rectangle</span>
-        </div>
-        <p class="lineup-card-model">mera</p>
-        <h3 class="lineup-card-name">Rectangle</h3>
-        <p class="lineup-card-specs">長方形デザイン / GFRC＋ステンレス304<br>REC013 / REC216</p>
-        <p class="lineup-card-price">¥450,000</p>
-        <p class="lineup-card-price-note">税別〜 / モデルにより異なります</p>
-        <div class="lineup-card-actions">
-          <a href="../contact/index.html" class="btn btn-ghost">お問い合わせ</a>
+        <div class="mera-model-card reveal reveal-delay-2">
+          <div class="mera-model-imgs">
+            <img src="../assets/images/mera/cir001-1.png" alt="mera CIR001">
+            <img src="../assets/images/mera/cir001-2.png" alt="mera CIR001 detail">
+          </div>
+          <div class="mera-model-info">
+            <p class="mera-model-num">mera · Circular</p>
+            <h4 class="mera-model-name">CIR001</h4>
+            <p class="mera-model-specs">円形デザイン / GFRC＋ステンレス304<br>屋外設置対応 / ガス式</p>
+            <p class="mera-model-price">¥400,000</p>
+            <p class="mera-model-price-note">税別 / 設置工事費別途</p>
+            <div style="margin-top:20px;">
+              <a href="../contact/index.html" class="btn btn-ghost" style="font-size:12px; padding:10px 24px;">お問い合わせ</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+
+    <!-- Carré -->
+    <div class="mera-series reveal">
+      <p class="mera-series-label">Series 02</p>
+      <h3 class="mera-series-title">Carré — 正方形シリーズ</h3>
+      <div class="mera-model-grid">
+        <div class="mera-model-card reveal reveal-delay-1">
+          <div class="mera-model-imgs">
+            <img src="../assets/images/mera/car008-1.png" alt="mera CAR008">
+            <img src="../assets/images/mera/car008-2.png" alt="mera CAR008 detail">
+          </div>
+          <div class="mera-model-info">
+            <p class="mera-model-num">mera · Carré</p>
+            <h4 class="mera-model-name">CAR008</h4>
+            <p class="mera-model-specs">正方形デザイン / GFRC＋ステンレス304<br>屋外設置対応 / ガス式</p>
+            <p class="mera-model-price">¥420,000</p>
+            <p class="mera-model-price-note">税別 / 設置工事費別途</p>
+            <div style="margin-top:20px;">
+              <a href="../contact/index.html" class="btn btn-ghost" style="font-size:12px; padding:10px 24px;">お問い合わせ</a>
+            </div>
+          </div>
+        </div>
+        <div class="mera-model-card reveal reveal-delay-2">
+          <div class="mera-model-imgs">
+            <img src="../assets/images/mera/car218-1.png" alt="mera CAR218">
+            <img src="../assets/images/mera/car218-2.png" alt="mera CAR218 detail">
+          </div>
+          <div class="mera-model-info">
+            <p class="mera-model-num">mera · Carré</p>
+            <h4 class="mera-model-name">CAR218</h4>
+            <p class="mera-model-specs">正方形デザイン / GFRC＋ステンレス304<br>屋外設置対応 / ガス式</p>
+            <p class="mera-model-price">¥420,000</p>
+            <p class="mera-model-price-note">税別 / 設置工事費別途</p>
+            <div style="margin-top:20px;">
+              <a href="../contact/index.html" class="btn btn-ghost" style="font-size:12px; padding:10px 24px;">お問い合わせ</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Rectangle -->
+    <div class="mera-series reveal">
+      <p class="mera-series-label">Series 03</p>
+      <h3 class="mera-series-title">Rectangle — 長方形シリーズ</h3>
+      <div class="mera-model-grid">
+        <div class="mera-model-card reveal reveal-delay-1">
+          <div class="mera-model-imgs">
+            <img src="../assets/images/mera/rec013-1.png" alt="mera REC013">
+            <img src="../assets/images/mera/rec013-2.png" alt="mera REC013 detail">
+          </div>
+          <div class="mera-model-info">
+            <p class="mera-model-num">mera · Rectangle</p>
+            <h4 class="mera-model-name">REC013</h4>
+            <p class="mera-model-specs">長方形デザイン / GFRC＋ステンレス304<br>屋外設置対応 / ガス式</p>
+            <p class="mera-model-price">¥450,000</p>
+            <p class="mera-model-price-note">税別 / 設置工事費別途</p>
+            <div style="margin-top:20px;">
+              <a href="../contact/index.html" class="btn btn-ghost" style="font-size:12px; padding:10px 24px;">お問い合わせ</a>
+            </div>
+          </div>
+        </div>
+        <div class="mera-model-card reveal reveal-delay-2">
+          <div class="mera-model-imgs">
+            <img src="../assets/images/mera/rec216-1.png" alt="mera REC216">
+            <img src="../assets/images/mera/rec216-2.png" alt="mera REC216 detail">
+          </div>
+          <div class="mera-model-info">
+            <p class="mera-model-num">mera · Rectangle</p>
+            <h4 class="mera-model-name">REC216</h4>
+            <p class="mera-model-specs">長方形デザイン / GFRC＋ステンレス304<br>屋外設置対応 / ガス式</p>
+            <p class="mera-model-price">¥450,000</p>
+            <p class="mera-model-price-note">税別 / 設置工事費別途</p>
+            <div style="margin-top:20px;">
+              <a href="../contact/index.html" class="btn btn-ghost" style="font-size:12px; padding:10px 24px;">お問い合わせ</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
