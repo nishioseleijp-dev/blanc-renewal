@@ -417,5 +417,23 @@
     startAuto();
   })();
 </script>
+<script>
+  // 各シリーズの「お問い合わせ」ボタン前に「詳細を見る」を追加
+  var seriesUrls = ['circular/', 'carre/', 'rectangle/'];
+  document.querySelectorAll('.mera-series').forEach(function(series, i) {
+    var url = seriesUrls[i];
+    if (!url) return;
+    series.querySelectorAll('.mera-model-info').forEach(function(info) {
+      var wrap = info.querySelector('div[style*="margin-top"]');
+      if (!wrap) return;
+      var btn = document.createElement('a');
+      btn.href = url;
+      btn.className = 'btn btn-primary';
+      btn.style.cssText = 'font-size:12px; padding:10px 24px; margin-right:12px;';
+      btn.textContent = '詳細を見る';
+      wrap.insertBefore(btn, wrap.firstChild);
+    });
+  });
+</script>
 </body>
 </html>

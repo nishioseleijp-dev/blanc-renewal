@@ -1,0 +1,154 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>megurino Solo | プライベートサウナ - SENSE Product Company</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <style>
+    .detail-hero {
+      height: 70vh; min-height: 480px; position: relative;
+      background-size: cover; background-position: center;
+      display: flex; align-items: flex-end;
+    }
+    .detail-hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.1) 60%, transparent 100%);
+    }
+    .detail-hero-content { position: relative; z-index: 1; padding-bottom: 64px; }
+    .detail-hero-content .page-hero-label { color: var(--color-accent); }
+    .detail-hero-content .page-hero-title { color: #fff; font-size: clamp(40px,7vw,80px); text-shadow: 0 2px 16px rgba(0,0,0,0.4); }
+    .detail-hero-content .page-hero-sub   { color: rgba(255,255,255,0.85); text-shadow: 0 1px 6px rgba(0,0,0,0.4); }
+
+    .detail-specs-table { width: 100%; border-collapse: collapse; margin-top: 24px; }
+    .detail-specs-table th, .detail-specs-table td {
+      padding: 14px 20px; border-bottom: 1px solid var(--color-border);
+      font-size: 13px; text-align: left;
+    }
+    .detail-specs-table th {
+      width: 40%; font-family: var(--font-en); letter-spacing: 0.1em;
+      font-size: 11px; text-transform: uppercase; color: var(--color-muted);
+      background: var(--color-surface);
+    }
+    .detail-specs-table td { color: var(--color-text); }
+
+    .detail-model-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 32px; margin-top: 48px; }
+    .detail-model-card { background: var(--color-white); border: 1px solid var(--color-border); overflow: hidden; }
+    .detail-model-card img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; }
+    .detail-model-info { padding: 24px 28px; }
+    .detail-model-num  { font-family: var(--font-en); font-size: 10px; letter-spacing: 0.25em; color: var(--color-muted); text-transform: uppercase; margin-bottom: 6px; }
+    .detail-model-name { font-family: var(--font-serif); font-size: 22px; font-weight: 300; color: var(--color-text); margin-bottom: 12px; }
+    .detail-model-specs { font-size: 12px; color: var(--color-muted); line-height: 1.9; margin-bottom: 14px; }
+    .detail-model-price { font-family: var(--font-en); font-size: 20px; color: var(--color-text); font-weight: 500; }
+    .detail-model-price-note { font-size: 11px; color: var(--color-muted); margin-top: 2px; }
+
+    .back-link { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-en); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-muted); text-decoration: none; margin-bottom: 48px; transition: color 0.2s; }
+    .back-link:hover { color: var(--color-accent); }
+
+    @media (max-width: 768px) { .detail-model-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<header class="site-header">
+  <a href="../../index.html" class="header-logo">SENSE <span>·</span> Product Company</a>
+  <nav class="site-nav">
+    <a href="../../blanc/index.html">blanc</a>
+    <a href="../../megurino/index.html">megurino</a>
+    <a href="../../logs-sauna/index.html">LOGS SAUNA</a>
+    <a href="../../mera/index.html">mera</a>
+    <a href="../../other/index.html">Other</a>
+    <a href="../../contact/index.html" class="nav-contact-btn">Contact</a>
+  </nav>
+  <button class="nav-toggle"><span></span><span></span><span></span></button>
+</header>
+<div class="nav-overlay">
+  <button class="nav-close">✕</button>
+  <a href="../../blanc/index.html">blanc</a>
+  <a href="../../megurino/index.html">megurino</a>
+  <a href="../../logs-sauna/index.html">LOGS SAUNA</a>
+  <a href="../../mera/index.html">mera</a>
+  <a href="../../other/index.html">Other</a>
+  <a href="../../contact/index.html">Contact</a>
+</div>
+<section class="detail-hero" style="background-image:url('../../assets/images/megurino/solo.png');">
+  <div class="detail-hero-overlay"></div>
+  <div class="container detail-hero-content">
+    <p class="page-hero-label">Private Sauna / 1 Person</p>
+    <h1 class="page-hero-title">megurino Solo</h1>
+    <p class="page-hero-sub">ひとりだけの、深い発汗体験。</p>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <a href="../../megurino/index.html" class="back-link">← megurino ラインアップに戻る</a>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start;">
+      <div class="reveal">
+        <p class="section-label">Product</p>
+        <h2 class="section-title">megurino<br><em>Solo</em></h2>
+        <div class="divider"></div>
+        <p style="font-size:14px; color:var(--color-muted); line-height:2.2;">
+          Soloは1名専用のコンパクトプライベートサウナ。HARVIAストーブによる本格フィンランド式ロウリュで、自宅に「自分だけの発汗空間」を実現します。都市の住環境でも設置しやすいスリムな設計です。
+        </p>
+        <table class="detail-specs-table reveal">
+          <tr><th>サイズ</th><td>W1000 × D1000 × H2000mm</td></tr>
+          <tr><th>定員</th><td>1名用</td></tr>
+          <tr><th>素材</th><td>天然木（選定材）</td></tr>
+          <tr><th>ストーブ</th><td>HARVIA 付属</td></tr>
+          <tr><th>設置方式</th><td>屋内 / 屋外対応</td></tr>
+          <tr><th>価格</th><td>¥560,000（税別）</td></tr>
+        </table>
+        <div style="margin-top:40px; display:flex; gap:16px; flex-wrap:wrap;">
+          <a href="../../contact/index.html" class="btn btn-primary">お問い合わせ・お見積もり</a>
+          <a href="duo/" class="btn btn-outline">Duo を見る</a>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <img src="../../assets/images/megurino/solo.png" alt="megurino Solo" style="width:100%; display:block; border:1px solid var(--color-border);">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cta-band">
+  <div class="container">
+    <h2 class="cta-band-title reveal">まずはお気軽にご相談ください。</h2>
+    <p class="cta-band-desc reveal">カタログ請求・概算お見積もり・ショールーム来場予約など、専門スタッフが丁寧にご案内いたします。</p>
+    <div class="cta-band-actions reveal">
+      <a href="../../contact/index.html" class="btn btn-primary">お問い合わせ・お見積もり</a>
+    </div>
+  </div>
+</section>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <p class="footer-brand-name">SENSE <span>·</span> Product Company</p>
+        <p class="footer-tagline">ワンランク上のライフスタイルを通じて、<br>豊かな時間と空間を提供します。</p>
+        <div class="footer-social"><a href="https://www.instagram.com/sense_pc/" target="_blank">◎</a></div>
+      </div>
+      <div>
+        <p class="footer-col-title">Products</p>
+        <div class="footer-links">
+          <a href="../../blanc/index.html">blanc</a>
+          <a href="../../megurino/index.html">megurino</a>
+          <a href="../../logs-sauna/index.html">LOGS SAUNA</a>
+          <a href="../../mera/index.html">mera</a>
+          <a href="../../other/index.html">Other</a>
+        </div>
+      </div>
+      <div>
+        <p class="footer-col-title">Information</p>
+        <div class="footer-links">
+          <a href="https://selei.co.jp/company/" target="_blank">Company</a>
+          <a href="../../contact/index.html">Contact</a>
+          <a href="../../privacypolicy/index.html">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">&copy; 2024 Select Innovation Co., Ltd. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>
