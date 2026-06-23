@@ -190,6 +190,45 @@
       .faucet-grid { grid-template-columns: 1fr; }
     }
 
+    /* ── Faucet Slider ── */
+    .faucet-slider-wrap {
+      position: relative;
+      border: 1px solid var(--color-border);
+      background: var(--color-bg);
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .faucet-slide { display: none; }
+    .faucet-slide.active { display: block; }
+    .faucet-arrow {
+      position: absolute;
+      top: calc(50% - 30px);
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.92);
+      border: 1px solid var(--color-border);
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; font-size: 15px;
+      color: var(--color-text); z-index: 2;
+      transition: all 0.2s ease;
+    }
+    .faucet-arrow:hover { background: var(--color-accent); color: #fff; border-color: var(--color-accent); }
+    .faucet-arrow-prev { left: 10px; }
+    .faucet-arrow-next { right: 10px; }
+    .faucet-dots-wrap {
+      display: flex; justify-content: center;
+      gap: 8px; padding: 14px 0;
+      border-top: 1px solid var(--color-border);
+      background: var(--color-surface);
+    }
+    .faucet-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--color-border); cursor: pointer;
+      border: none; padding: 0; transition: all 0.25s ease;
+    }
+    .faucet-dot.active { background: var(--color-accent); width: 20px; border-radius: 3px; }
+
     /* ── Hero Slider ── */
     .hero-slider {
       position: absolute;
@@ -370,8 +409,8 @@
           五感に訴える体験空間がここにあります。
         </p>
       </div>
-      <div class="reveal reveal-delay-2" style="background:linear-gradient(135deg,#1a1a2e,#0a0a14); aspect-ratio:4/3; display:flex; align-items:center; justify-content:center; color:var(--color-muted); font-family:var(--font-en); font-size:11px; letter-spacing:0.3em; text-transform:uppercase;">
-        Product Image
+      <div class="reveal reveal-delay-2">
+        <img src="../assets/images/blanc/concept.png" alt="blanc イメージ" style="width:100%; display:block; aspect-ratio:4/3; object-fit:cover;">
       </div>
     </div>
   </div>
@@ -722,8 +761,9 @@
       <div class="divider"></div>
       <p class="section-desc">デザイン性と機能性を兼ね備えた6種類の水栓をご用意。浴槽スタイルに合わせてお選びいただけます。</p>
     </div>
-    <div class="faucet-grid">
-      <div class="faucet-card reveal reveal-delay-1">
+    <div class="faucet-slider-wrap reveal">
+      <!-- slide 1 -->
+      <div class="faucet-slide active">
         <div class="faucet-images">
           <img class="faucet-img" src="../assets/images/blanc/faucet/gema.png" alt="D-GEMA ゲマ">
           <img class="faucet-img" src="../assets/images/blanc/faucet/gema-front.png" alt="D-GEMA ゲマ 正面">
@@ -733,7 +773,8 @@
           <p class="faucet-name">D-GEMA　ゲマ</p>
         </div>
       </div>
-      <div class="faucet-card reveal reveal-delay-2">
+      <!-- slide 2 -->
+      <div class="faucet-slide">
         <div class="faucet-images">
           <img class="faucet-img" src="../assets/images/blanc/faucet/manus.png" alt="D-MANUS マヌス">
           <img class="faucet-img" src="../assets/images/blanc/faucet/manus-front.png" alt="D-MANUS マヌス 正面">
@@ -743,7 +784,8 @@
           <p class="faucet-name">D-MANUS　マヌス</p>
         </div>
       </div>
-      <div class="faucet-card reveal reveal-delay-3">
+      <!-- slide 3 -->
+      <div class="faucet-slide">
         <div class="faucet-images">
           <img class="faucet-img" src="../assets/images/blanc/faucet/orbis.png" alt="D-ORBIS オルビス">
           <img class="faucet-img" src="../assets/images/blanc/faucet/orbis-front.png" alt="D-ORBIS オルビス 正面">
@@ -753,7 +795,8 @@
           <p class="faucet-name">D-ORBIS　オルビス</p>
         </div>
       </div>
-      <div class="faucet-card reveal reveal-delay-1">
+      <!-- slide 4 -->
+      <div class="faucet-slide">
         <div class="faucet-images">
           <img class="faucet-img" src="../assets/images/blanc/faucet/rhythmus.png" alt="D-RHYTHMUS リュトミス">
           <img class="faucet-img" src="../assets/images/blanc/faucet/rhythmus-front.png" alt="D-RHYTHMUS リュトミス 正面">
@@ -763,7 +806,8 @@
           <p class="faucet-name">D-RHYTHMUS　リュトミス</p>
         </div>
       </div>
-      <div class="faucet-card reveal reveal-delay-2">
+      <!-- slide 5 -->
+      <div class="faucet-slide">
         <div class="faucet-images">
           <img class="faucet-img" src="../assets/images/blanc/faucet/tactus.png" alt="D-TACTUS タクトゥス">
           <img class="faucet-img" src="../assets/images/blanc/faucet/tactus-front.png" alt="D-TACTUS タクトゥス 正面">
@@ -773,7 +817,8 @@
           <p class="faucet-name">D-TACTUS　タクトゥス</p>
         </div>
       </div>
-      <div class="faucet-card reveal reveal-delay-3">
+      <!-- slide 6 -->
+      <div class="faucet-slide">
         <div class="faucet-images">
           <img class="faucet-img" src="../assets/images/blanc/faucet/virtus.png" alt="D-VIRTUS ヴィルトゥス">
           <img class="faucet-img" src="../assets/images/blanc/faucet/virtus-front.png" alt="D-VIRTUS ヴィルトゥス 正面">
@@ -782,6 +827,18 @@
           <p class="faucet-model">Faucet</p>
           <p class="faucet-name">D-VIRTUS　ヴィルトゥス</p>
         </div>
+      </div>
+      <!-- arrows -->
+      <button class="faucet-arrow faucet-arrow-prev" aria-label="前へ">&#8592;</button>
+      <button class="faucet-arrow faucet-arrow-next" aria-label="次へ">&#8594;</button>
+      <!-- dots -->
+      <div class="faucet-dots-wrap">
+        <button class="faucet-dot active" data-index="0"></button>
+        <button class="faucet-dot" data-index="1"></button>
+        <button class="faucet-dot" data-index="2"></button>
+        <button class="faucet-dot" data-index="3"></button>
+        <button class="faucet-dot" data-index="4"></button>
+        <button class="faucet-dot" data-index="5"></button>
       </div>
     </div>
   </div>
@@ -1061,6 +1118,26 @@
     applyTheme();
     resetBar();
     startAuto();
+  })();
+</script>
+<script>
+  // 水栓スライダー
+  (function () {
+    const slides = document.querySelectorAll('.faucet-slider-wrap .faucet-slide');
+    const dots   = document.querySelectorAll('.faucet-slider-wrap .faucet-dot');
+    const prev   = document.querySelector('.faucet-arrow-prev');
+    const next   = document.querySelector('.faucet-arrow-next');
+    let cur = 0;
+    function goTo(n) {
+      slides[cur].classList.remove('active');
+      dots[cur].classList.remove('active');
+      cur = (n + slides.length) % slides.length;
+      slides[cur].classList.add('active');
+      dots[cur].classList.add('active');
+    }
+    prev.addEventListener('click', () => goTo(cur - 1));
+    next.addEventListener('click', () => goTo(cur + 1));
+    dots.forEach(d => d.addEventListener('click', () => goTo(+d.dataset.index)));
   })();
 </script>
 <script>

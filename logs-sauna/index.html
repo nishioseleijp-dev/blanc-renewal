@@ -7,7 +7,46 @@
   <meta name="description" content="LOGS SAUNAは大人の遊び心が詰まったフィンランド式バレルサウナ。¥1,190,000〜">
   <link rel="stylesheet" href="../assets/css/style.css">
   <style>
-    .page-hero-bg { background: linear-gradient(160deg, #ede9e2 0%, #f0ece6 50%, #f5f3ef 100%) !important; }
+    /* ── Hero Slider ── */
+    .hero-slider { position: absolute; inset: 0; z-index: 0; }
+    .hero-slide {
+      position: absolute; inset: 0;
+      background-size: cover; background-position: center;
+      opacity: 0; transition: opacity 1.2s ease;
+    }
+    .hero-slide.active { opacity: 1; }
+    .hero-content-area { transition: color 0.6s ease; }
+    .hero-theme-light .page-hero-label { color: var(--color-accent); }
+    .hero-theme-light .page-hero-title { color: #2a2724; text-shadow: 0 2px 10px rgba(255,255,255,0.7); }
+    .hero-theme-light .page-hero-sub   { color: #4a4540; text-shadow: 0 1px 6px rgba(255,255,255,0.7); }
+    .hero-theme-dark .page-hero-label  { color: var(--color-accent); }
+    .hero-theme-dark .page-hero-title  { color: #ffffff; text-shadow: 0 2px 12px rgba(0,0,0,0.5); }
+    .hero-theme-dark .page-hero-sub    { color: rgba(255,255,255,0.88); text-shadow: 0 1px 6px rgba(0,0,0,0.5); }
+    .hero-dots {
+      position: absolute; bottom: 80px; left: 50%; transform: translateX(-50%);
+      display: flex; gap: 10px; z-index: 2;
+    }
+    .hero-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: rgba(255,255,255,0.4); cursor: pointer;
+      transition: all 0.3s ease; border: none; padding: 0;
+    }
+    .hero-dot.active { background: var(--color-accent); width: 24px; border-radius: 3px; }
+    .hero-arrow {
+      position: absolute; top: 50%; transform: translateY(-50%); z-index: 2;
+      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+      color: #fff; width: 44px; height: 44px; border-radius: 50%;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      font-size: 16px; transition: all 0.3s ease; backdrop-filter: blur(4px);
+    }
+    .hero-arrow:hover { background: rgba(201,168,76,0.3); border-color: var(--color-accent); }
+    .hero-arrow-prev { left: 32px; }
+    .hero-arrow-next { right: 32px; }
+    .hero-progress {
+      position: absolute; bottom: 0; left: 0; height: 2px;
+      background: var(--color-accent); width: 0%; z-index: 2; transition: none;
+    }
+    .hero-progress.running { transition: width 5s linear; width: 100%; }
   </style>
 </head>
 <body>
@@ -33,15 +72,33 @@
   <a href="../contact/index.html">Contact</a>
 </div>
 
-<section class="page-hero">
-  <div class="page-hero-bg"></div>
-  <div class="container">
+<section class="page-hero" style="height:100vh; min-height:600px;">
+  <div class="hero-slider">
+    <div class="hero-slide active" data-theme="dark" style="background-image:url('../assets/images/logs-sauna/hero-1.jpg');"></div>
+    <div class="hero-slide"        data-theme="dark" style="background-image:url('../assets/images/logs-sauna/hero-2.png');"></div>
+    <div class="hero-slide"        data-theme="dark" style="background-image:url('../assets/images/logs-sauna/hero-3.png');"></div>
+    <div class="hero-slide"        data-theme="dark" style="background-image:url('../assets/images/logs-sauna/hero-4.png');"></div>
+  </div>
+
+  <div class="container hero-content-area hero-theme-dark" style="position:relative; z-index:1; height:100%; display:flex; align-items:flex-end; padding-bottom:120px;">
     <div class="page-hero-content">
       <p class="page-hero-label">Barrel Sauna</p>
       <h1 class="page-hero-title">LOGS SAUNA</h1>
       <p class="page-hero-sub">遊び心を持った大人の、<br>新しいサウナという選択。</p>
     </div>
   </div>
+
+  <button class="hero-arrow hero-arrow-prev" aria-label="前へ">&#8592;</button>
+  <button class="hero-arrow hero-arrow-next" aria-label="次へ">&#8594;</button>
+
+  <div class="hero-dots">
+    <button class="hero-dot active" data-index="0"></button>
+    <button class="hero-dot" data-index="1"></button>
+    <button class="hero-dot" data-index="2"></button>
+    <button class="hero-dot" data-index="3"></button>
+  </div>
+
+  <div class="hero-progress" id="logsHeroProgress"></div>
 </section>
 
 <section class="section">
@@ -186,5 +243,43 @@
   </div>
 </footer>
 <script src="../assets/js/main.js"></script>
+<script>
+  (function () {
+    const slides      = document.querySelectorAll('.hero-slide');
+    const dots        = document.querySelectorAll('.hero-dot');
+    const prev        = document.querySelector('.hero-arrow-prev');
+    const next        = document.querySelector('.hero-arrow-next');
+    const bar         = document.getElementById('logsHeroProgress');
+    const contentArea = document.querySelector('.hero-content-area');
+    let current = 0, timer;
+    function applyTheme() {
+      const theme = slides[current].dataset.theme || 'dark';
+      contentArea.classList.remove('hero-theme-light', 'hero-theme-dark');
+      contentArea.classList.add('hero-theme-' + theme);
+    }
+    function goTo(n) {
+      slides[current].classList.remove('active');
+      dots[current].classList.remove('active');
+      current = (n + slides.length) % slides.length;
+      slides[current].classList.add('active');
+      dots[current].classList.add('active');
+      applyTheme(); resetBar();
+    }
+    function resetBar() {
+      bar.classList.remove('running');
+      bar.style.width = '0%';
+      void bar.offsetWidth;
+      bar.classList.add('running');
+    }
+    function startAuto() {
+      clearInterval(timer);
+      timer = setInterval(() => goTo(current + 1), 5000);
+    }
+    dots.forEach(d => d.addEventListener('click', () => { goTo(+d.dataset.index); startAuto(); }));
+    prev.addEventListener('click', () => { goTo(current - 1); startAuto(); });
+    next.addEventListener('click', () => { goTo(current + 1); startAuto(); });
+    applyTheme(); resetBar(); startAuto();
+  })();
+</script>
 </body>
 </html>
