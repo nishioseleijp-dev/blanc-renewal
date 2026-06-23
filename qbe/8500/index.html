@@ -32,6 +32,10 @@
     .detail-specs-table td { color: var(--color-text); }
     .back-link { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-en); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-muted); text-decoration: none; margin-bottom: 48px; transition: color 0.2s; }
     .back-link:hover { color: var(--color-accent); }
+    .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .gallery-item img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; }
+    .gallery-item-label { font-family: var(--font-en); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-muted); margin-top: 12px; text-align: center; }
+    @media (max-width: 768px) { .gallery-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -91,6 +95,29 @@
       </div>
       <div class="reveal reveal-delay-2">
         <img src="../../assets/images/qbe/qbe-8500.png" alt="Q.be 8500" style="width:100%; display:block; border:1px solid var(--color-border);">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section" style="padding-top:0; background:var(--color-surface); border-top:1px solid var(--color-border);">
+  <div class="container" style="padding-top:80px;">
+    <div class="section-header reveal" style="margin-bottom:48px;">
+      <p class="section-label">Gallery</p>
+      <h2 class="section-title">ギャラリー</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item reveal reveal-delay-1">
+        <img src="../../assets/images/qbe/8500-terrace.png" alt="Q.be 8500 テラス">
+        <p class="gallery-item-label">テラス</p>
+      </div>
+      <div class="gallery-item reveal reveal-delay-2">
+        <img src="../../assets/images/qbe/8500-body.png" alt="Q.be 8500 本体">
+        <p class="gallery-item-label">本体</p>
+      </div>
+      <div class="gallery-item reveal reveal-delay-3">
+        <img src="../../assets/images/qbe/8500-terrace-body.png" alt="Q.be 8500 テラス+本体">
+        <p class="gallery-item-label">テラス+本体</p>
       </div>
     </div>
   </div>
