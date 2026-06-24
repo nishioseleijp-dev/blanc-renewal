@@ -426,12 +426,12 @@ ul { list-style: none; }
 .product-card:hover .product-card-bg { transform: scale(1.05); }
 
 /* product-specific backgrounds */
-.card-blanc .product-card-bg { background: linear-gradient(160deg, #1a1a2e 0%, #0d1117 100%); }
-.card-megurino .product-card-bg { background: linear-gradient(160deg, #1a1208 0%, #0a0a0a 100%); }
+.card-blanc .product-card-bg { background: url('../images/blanc/hero-1.png') center/cover no-repeat; }
+.card-megurino .product-card-bg { background: url('../images/megurino/hero-1.png') center/cover no-repeat; }
 .card-qbe .product-card-bg { background: linear-gradient(160deg, #0a1a0a 0%, #0d0d0d 100%); }
 .card-xxcia .product-card-bg { background: linear-gradient(160deg, #1a0a1a 0%, #0d0d0d 100%); }
-.card-logs .product-card-bg { background: linear-gradient(160deg, #1a1008 0%, #0d0a06 100%); }
-.card-mera .product-card-bg { background: linear-gradient(160deg, #1a0808 0%, #0d0d0d 100%); }
+.card-logs .product-card-bg { background: url('../images/logs-sauna/hero-1.jpg') center/cover no-repeat; }
+.card-mera .product-card-bg { background: url('../images/mera/hero-1.png') center/cover no-repeat; }
 
 .product-card-overlay {
   position: absolute;
