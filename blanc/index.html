@@ -1163,25 +1163,5 @@
     dots.forEach(function(d, i) { d.addEventListener('click', () => slideTo(i)); });
   });
 </script>
-<script>
-  // 各シリーズタブ内のカードに「詳細を見る」ボタンを追加
-  const panelLinks = {
-    'tab-clarte':  'clarte/',
-    'tab-opaline': 'opaline/',
-    'tab-horizon': 'horizon/',
-    'tab-soleil':  'soleil/'
-  };
-  document.querySelectorAll('.style-panel').forEach(function(panel) {
-    var url = panelLinks[panel.id];
-    if (!url) return;
-    panel.querySelectorAll('.lineup-card-actions').forEach(function(actions) {
-      var btn = document.createElement('a');
-      btn.href = url;
-      btn.className = 'btn btn-primary';
-      btn.textContent = '詳細を見る';
-      actions.insertBefore(btn, actions.firstChild);
-    });
-  });
-</script>
 </body>
 </html>
