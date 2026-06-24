@@ -32,10 +32,23 @@
     .detail-specs-table td { color: var(--color-text); }
     .back-link { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-en); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-muted); text-decoration: none; margin-bottom: 48px; transition: color 0.2s; }
     .back-link:hover { color: var(--color-accent); }
-    .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .gallery-item img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; }
-    .gallery-item-label { font-family: var(--font-en); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-muted); margin-top: 12px; text-align: center; }
-    @media (max-width: 768px) { .gallery-grid { grid-template-columns: 1fr; } }
+    .option-slider-wrap { position: relative; overflow: hidden; }
+    .option-slider-track { display: flex; transition: transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94); }
+    .option-card { flex: 0 0 100%; background: var(--color-white); border: 1px solid var(--color-border); overflow: hidden; display: grid; grid-template-columns: 1fr 1fr; }
+    .option-card img { width: 100%; height: 100%; object-fit: contain; display: block; background: var(--color-surface); padding: 40px; }
+    .option-card-body { padding: 48px 40px; display: flex; flex-direction: column; justify-content: center; }
+    .option-card-label { font-family: var(--font-en); font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--color-muted); margin-bottom: 8px; }
+    .option-card-name { font-family: var(--font-serif); font-size: 28px; font-weight: 300; color: var(--color-text); margin-bottom: 8px; letter-spacing: 0.05em; }
+    .option-card-sub { font-size: 13px; color: var(--color-muted); margin-bottom: 24px; }
+    .option-card-price { font-family: var(--font-en); font-size: 28px; color: var(--color-text); font-weight: 500; }
+    .option-card-price-note { font-size: 11px; color: var(--color-muted); margin-top: 4px; }
+    .option-slider-nav { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 32px; }
+    .option-slider-arrow { width: 44px; height: 44px; border-radius: 50%; background: var(--color-surface); border: 1px solid var(--color-border); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 16px; color: var(--color-text); transition: all 0.2s ease; }
+    .option-slider-arrow:hover { background: var(--color-accent); color: #fff; border-color: var(--color-accent); }
+    .option-slider-dots { display: flex; gap: 8px; }
+    .option-slider-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--color-border); cursor: pointer; border: none; padding: 0; transition: all 0.3s ease; }
+    .option-slider-dot.active { background: var(--color-accent); width: 20px; border-radius: 3px; }
+    @media (max-width: 768px) { .option-card { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -94,7 +107,7 @@
         </div>
       </div>
       <div class="reveal reveal-delay-2">
-        <img src="../../assets/images/qbe/qbe-11500.png" alt="Q.be 11500" style="width:100%; display:block; border:1px solid var(--color-border);">
+        <img src="../../assets/images/qbe/11500-body.png" alt="Q.be 11500" style="width:100%; display:block; border:1px solid var(--color-border);">
       </div>
     </div>
   </div>
@@ -106,19 +119,48 @@
       <h2 class="section-title">ギャラリー</h2>
       <div class="divider"></div>
     </div>
-    <div class="gallery-grid">
-      <div class="gallery-item reveal reveal-delay-1">
-        <img src="../../assets/images/qbe/11500-terrace.png" alt="Q.be 11500 テラス">
-        <p class="gallery-item-label">テラス</p>
+    <div class="option-slider-wrap reveal">
+      <div class="option-slider-track" id="qbe11500Track">
+        <div class="option-card">
+          <img src="../../assets/images/qbe/11500-terrace.png" alt="Q.be 11500 テラス">
+          <div class="option-card-body">
+            <p class="option-card-label">Q.be 11500 — 01 / 03</p>
+            <p class="option-card-name">テラス</p>
+            <p class="option-card-sub">W11500 × D2250 × H2450mm</p>
+            <p class="option-card-price">—</p>
+            <p class="option-card-price-note">税別 / 本体価格（設置工事費別途）</p>
+          </div>
+        </div>
+        <div class="option-card">
+          <img src="../../assets/images/qbe/11500-body.png" alt="Q.be 11500 本体">
+          <div class="option-card-body">
+            <p class="option-card-label">Q.be 11500 — 02 / 03</p>
+            <p class="option-card-name">本体</p>
+            <p class="option-card-sub">W11500 × D2250 × H2450mm</p>
+            <p class="option-card-price">¥7,280,000</p>
+            <p class="option-card-price-note">税別 / 本体価格（設置工事費別途）</p>
+          </div>
+        </div>
+        <div class="option-card">
+          <img src="../../assets/images/qbe/11500-terrace-body.png" alt="Q.be 11500 フルパッケージ">
+          <div class="option-card-body">
+            <p class="option-card-label">Q.be 11500 — 03 / 03</p>
+            <p class="option-card-name">フルパッケージ</p>
+            <p class="option-card-sub">テラス+本体</p>
+            <p class="option-card-price">—</p>
+            <p class="option-card-price-note">税別 / 本体価格（設置工事費別途）</p>
+          </div>
+        </div>
       </div>
-      <div class="gallery-item reveal reveal-delay-2">
-        <img src="../../assets/images/qbe/11500-body.png" alt="Q.be 11500 本体">
-        <p class="gallery-item-label">本体</p>
+    </div>
+    <div class="option-slider-nav">
+      <button class="option-slider-arrow" id="qbe11500Prev">&#8592;</button>
+      <div class="option-slider-dots">
+        <button class="option-slider-dot active" data-index="0"></button>
+        <button class="option-slider-dot" data-index="1"></button>
+        <button class="option-slider-dot" data-index="2"></button>
       </div>
-      <div class="gallery-item reveal reveal-delay-3">
-        <img src="../../assets/images/qbe/11500-terrace-body.png" alt="Q.be 11500 テラス+本体">
-        <p class="gallery-item-label">テラス+本体</p>
-      </div>
+      <button class="option-slider-arrow" id="qbe11500Next">&#8594;</button>
     </div>
   </div>
 </section>
@@ -164,5 +206,22 @@
   </div>
 </footer>
 <script src="../../assets/js/main.js"></script>
+<script>
+  (function () {
+    const track = document.getElementById('qbe11500Track');
+    const dots  = document.querySelectorAll('.option-slider-dot');
+    const prev  = document.getElementById('qbe11500Prev');
+    const next  = document.getElementById('qbe11500Next');
+    let cur = 0;
+    function goTo(n) {
+      cur = (n + 3) % 3;
+      track.style.transform = 'translateX(-' + (cur * 100) + '%)';
+      dots.forEach(function(d, i) { d.classList.toggle('active', i === cur); });
+    }
+    prev.addEventListener('click', function () { goTo(cur - 1); });
+    next.addEventListener('click', function () { goTo(cur + 1); });
+    dots.forEach(function (d, i) { d.addEventListener('click', function () { goTo(i); }); });
+  })();
+</script>
 </body>
 </html>
