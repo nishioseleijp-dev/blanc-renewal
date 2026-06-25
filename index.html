@@ -21,6 +21,18 @@
     .hero-dots { position:absolute; bottom:88px; left:50%; transform:translateX(-50%); display:flex; gap:9px; z-index:2; flex-wrap:wrap; max-width:80%; justify-content:center; }
     .hero-dot { width:8px; height:8px; border-radius:50%; border:none; background:rgba(255,255,255,0.45); cursor:pointer; padding:0; transition:all .3s; }
     .hero-dot.active { background:var(--color-accent); width:22px; border-radius:3px; }
+
+    .works { padding:120px 0 130px; overflow:hidden; }
+    .works-marquee { overflow:hidden; width:100%;
+      -webkit-mask-image:linear-gradient(to right, transparent, #000 7%, #000 93%, transparent);
+      mask-image:linear-gradient(to right, transparent, #000 7%, #000 93%, transparent); }
+    .works-track { display:flex; gap:20px; width:max-content; animation:worksScroll 60s linear infinite; }
+    .works-marquee:hover .works-track { animation-play-state:paused; }
+    .works-item { flex:0 0 auto; width:380px; height:260px; overflow:hidden; background:var(--color-surface); }
+    .works-item img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .6s ease; }
+    .works-item:hover img { transform:scale(1.05); }
+    @keyframes worksScroll { from { transform:translateX(0); } to { transform:translateX(-50%); } }
+    @media (max-width:640px){ .works-item { width:280px; height:200px; } }
   </style>
 </head>
 <body>
@@ -91,58 +103,35 @@
   </div>
 </section>
 
-<!-- 製品グリッド -->
-<section class="section" style="padding-top: 0;">
-  <div class="products-grid" style="grid-template-columns: repeat(2, 1fr);">
-    <a href="blanc/index.html" class="product-card card-blanc" style="grid-column: span 1; min-height: 500px;">
-      <div class="product-card-bg"></div>
-      <div class="product-card-overlay"></div>
-      <div class="product-card-body">
-        <p class="product-card-label">Luxury Jacuzzi</p>
-        <h2 class="product-card-name">blanc</h2>
-        <p class="product-card-price">¥790,000（税別）〜</p>
-      </div>
-      <div class="product-card-arrow">→</div>
-    </a>
-    <a href="megurino/index.html" class="product-card card-megurino">
-      <div class="product-card-bg"></div>
-      <div class="product-card-overlay"></div>
-      <div class="product-card-body">
-        <p class="product-card-label">Private Sauna</p>
-        <h2 class="product-card-name">megurino</h2>
-        <p class="product-card-price">¥560,000（税別）〜</p>
-      </div>
-      <div class="product-card-arrow">→</div>
-    </a>
-    <a href="logs-sauna/index.html" class="product-card card-logs">
-      <div class="product-card-bg"></div>
-      <div class="product-card-overlay"></div>
-      <div class="product-card-body">
-        <p class="product-card-label">Barrel Sauna</p>
-        <h2 class="product-card-name">LOGS SAUNA</h2>
-        <p class="product-card-price">¥1,190,000（税別）〜</p>
-      </div>
-      <div class="product-card-arrow">→</div>
-    </a>
-    <a href="mera/index.html" class="product-card card-mera">
-      <div class="product-card-bg"></div>
-      <div class="product-card-overlay"></div>
-      <div class="product-card-body">
-        <p class="product-card-label">Outdoor Firepit</p>
-        <h2 class="product-card-name">mera</h2>
-        <p class="product-card-price">¥400,000（税別）〜</p>
-      </div>
-      <div class="product-card-arrow">→</div>
-    </a>
-    <a href="other/index.html" class="product-card" style="grid-column: span 2; min-height: 260px; background: var(--color-surface);">
-      <div class="product-card-overlay"></div>
-      <div class="product-card-body">
-        <p class="product-card-label">Other Products</p>
-        <h2 class="product-card-name" style="font-size: 24px;">Other</h2>
-        <p class="product-card-price">その他の製品・カスタムオーダーはこちら</p>
-      </div>
-      <div class="product-card-arrow">→</div>
-    </a>
+<!-- 施工事例（自動横スクロール） -->
+<section class="works">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="section-label">Works</p>
+      <h2 class="section-title">施工事例</h2>
+      <div class="divider"></div>
+    </div>
+  </div>
+  <div class="works-marquee">
+    <div class="works-track">
+      <div class="works-item"><img src="assets/images/blanc/hero-1.png" alt="施工事例"></div>
+      <div class="works-item"><img src="assets/images/megurino/hero-1.png" alt="施工事例"></div>
+      <div class="works-item"><img src="assets/images/logs-sauna/hero-1.jpg" alt="施工事例"></div>
+      <div class="works-item"><img src="assets/images/mera/hero-1.png" alt="施工事例"></div>
+      <div class="works-item"><img src="assets/images/blanc/concept.png" alt="施工事例"></div>
+      <div class="works-item"><img src="assets/images/megurino/concept.png" alt="施工事例"></div>
+      <div class="works-item"><img src="assets/images/logs-sauna/concept.jpg" alt="施工事例"></div>
+      <div class="works-item"><img src="assets/images/xxcia-dome/hero-1.jpg" alt="施工事例"></div>
+      <!-- ループ用の複製 -->
+      <div class="works-item"><img src="assets/images/blanc/hero-1.png" alt="施工事例"></div>
+      <div class="works-item"><img src="assets/images/megurino/hero-1.png" alt="施工事例"></div>
+      <div class="works-item"><img src="assets/images/logs-sauna/hero-1.jpg" alt="施工事例"></div>
+      <div class="works-item"><img src="assets/images/mera/hero-1.png" alt="施工事例"></div>
+      <div class="works-item"><img src="assets/images/blanc/concept.png" alt="施工事例"></div>
+      <div class="works-item"><img src="assets/images/megurino/concept.png" alt="施工事例"></div>
+      <div class="works-item"><img src="assets/images/logs-sauna/concept.jpg" alt="施工事例"></div>
+      <div class="works-item"><img src="assets/images/xxcia-dome/hero-1.jpg" alt="施工事例"></div>
+    </div>
   </div>
 </section>
 
