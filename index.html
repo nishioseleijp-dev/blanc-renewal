@@ -10,9 +10,9 @@
   <meta property="og:type" content="website">
   <link rel="stylesheet" href="assets/css/style.css">
   <style>
-    .hero-slider { position:absolute; inset:0; z-index:0; }
-    .hero-slide { position:absolute; inset:0; background-size:cover; background-position:center; opacity:0; transition:opacity 1.2s ease; }
-    .hero-slide.active { opacity:1; }
+    .hero-slider { position:absolute; inset:0; z-index:0; overflow:hidden; }
+    .hero-track { display:flex; height:100%; width:100%; transition:transform 0.9s cubic-bezier(0.76,0,0.24,1); }
+    .hero-slide { flex:0 0 100%; height:100%; background-size:cover; background-position:center; }
     .hero-overlay { position:absolute; inset:0; z-index:0; background:linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.3) 45%, rgba(0,0,0,0.5) 100%); }
     .hero-has-slider .hero-content { z-index:1; }
     .hero-has-slider .hero-title { color:#fff; text-shadow:0 2px 18px rgba(0,0,0,0.45); }
@@ -67,6 +67,7 @@
 <!-- ヒーロー -->
 <section class="hero hero-has-slider">
   <div class="hero-slider" id="heroSlider">
+    <div class="hero-track" id="heroTrack">
     <div class="hero-slide active" style="background-image:url('assets/images/blanc/hero-1.png');" data-href="blanc/index.html"></div>
     <div class="hero-slide" style="background-image:url('assets/images/megurino/hero-1.png');" data-href="megurino/index.html"></div>
     <div class="hero-slide" style="background-image:url('assets/images/logs-sauna/hero-1.jpg');" data-href="logs-sauna/index.html"></div>
@@ -85,6 +86,7 @@
     <div class="hero-slide" style="background-image:url('assets/images/mera/hero-4.jpg');" data-href="mera/index.html"></div>
     <div class="hero-slide" style="background-image:url('assets/images/blanc/hero-5.png');" data-href="blanc/index.html"></div>
     <div class="hero-slide" style="background-image:url('assets/images/megurino/hero-5.png');" data-href="megurino/index.html"></div>
+    </div>
   </div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
@@ -263,10 +265,11 @@
 <script>
   // ホームヒーロー：4ブランドの全画像を交互に表示し、製品を見るボタンを現在のブランドに連動
   (function () {
+    var track = document.getElementById('heroTrack');
     var slides = Array.prototype.slice.call(document.querySelectorAll('#heroSlider .hero-slide'));
     var dotsWrap = document.getElementById('heroDots');
     var productBtn = document.getElementById('heroProductBtn');
-    if (!slides.length) return;
+    if (!slides.length || !track) return;
     var cur = 0;
 
     var dots = slides.map(function (_, i) {
@@ -279,11 +282,10 @@
     });
 
     function show(i) {
-      slides[cur].classList.remove('active');
       dots[cur].classList.remove('active');
       cur = (i + slides.length) % slides.length;
-      slides[cur].classList.add('active');
       dots[cur].classList.add('active');
+      track.style.transform = 'translateX(-' + (cur * 100) + '%)';
       var href = slides[cur].getAttribute('data-href');
       if (href && productBtn) productBtn.setAttribute('href', href);
     }
