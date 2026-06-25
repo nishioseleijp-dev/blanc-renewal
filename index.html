@@ -9,6 +9,19 @@
   <meta property="og:description" content="ワンランク上のライフスタイルへ">
   <meta property="og:type" content="website">
   <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    .hero-slider { position:absolute; inset:0; z-index:0; }
+    .hero-slide { position:absolute; inset:0; background-size:cover; background-position:center; opacity:0; transition:opacity 1.2s ease; }
+    .hero-slide.active { opacity:1; }
+    .hero-overlay { position:absolute; inset:0; z-index:0; background:linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.3) 45%, rgba(0,0,0,0.5) 100%); }
+    .hero-has-slider .hero-content { z-index:1; }
+    .hero-has-slider .hero-title { color:#fff; text-shadow:0 2px 18px rgba(0,0,0,0.45); }
+    .hero-has-slider .hero-sub { color:rgba(255,255,255,0.9); text-shadow:0 1px 10px rgba(0,0,0,0.45); }
+    .hero-has-slider .hero-scroll span { color:rgba(255,255,255,0.85); }
+    .hero-dots { position:absolute; bottom:88px; left:50%; transform:translateX(-50%); display:flex; gap:9px; z-index:2; flex-wrap:wrap; max-width:80%; justify-content:center; }
+    .hero-dot { width:8px; height:8px; border-radius:50%; border:none; background:rgba(255,255,255,0.45); cursor:pointer; padding:0; transition:all .3s; }
+    .hero-dot.active { background:var(--color-accent); width:22px; border-radius:3px; }
+  </style>
 </head>
 <body>
 
@@ -40,17 +53,38 @@
 </div>
 
 <!-- ヒーロー -->
-<section class="hero">
-  <div class="hero-bg"></div>
+<section class="hero hero-has-slider">
+  <div class="hero-slider" id="heroSlider">
+    <div class="hero-slide active" style="background-image:url('assets/images/blanc/hero-1.png');" data-href="blanc/index.html"></div>
+    <div class="hero-slide" style="background-image:url('assets/images/megurino/hero-1.png');" data-href="megurino/index.html"></div>
+    <div class="hero-slide" style="background-image:url('assets/images/logs-sauna/hero-1.jpg');" data-href="logs-sauna/index.html"></div>
+    <div class="hero-slide" style="background-image:url('assets/images/mera/hero-1.png');" data-href="mera/index.html"></div>
+    <div class="hero-slide" style="background-image:url('assets/images/blanc/hero-2.png');" data-href="blanc/index.html"></div>
+    <div class="hero-slide" style="background-image:url('assets/images/megurino/hero-2.png');" data-href="megurino/index.html"></div>
+    <div class="hero-slide" style="background-image:url('assets/images/logs-sauna/hero-2.png');" data-href="logs-sauna/index.html"></div>
+    <div class="hero-slide" style="background-image:url('assets/images/mera/hero-2.jpg');" data-href="mera/index.html"></div>
+    <div class="hero-slide" style="background-image:url('assets/images/blanc/hero-3.png');" data-href="blanc/index.html"></div>
+    <div class="hero-slide" style="background-image:url('assets/images/megurino/hero-3.png');" data-href="megurino/index.html"></div>
+    <div class="hero-slide" style="background-image:url('assets/images/logs-sauna/hero-3.png');" data-href="logs-sauna/index.html"></div>
+    <div class="hero-slide" style="background-image:url('assets/images/mera/hero-3.png');" data-href="mera/index.html"></div>
+    <div class="hero-slide" style="background-image:url('assets/images/blanc/hero-4.png');" data-href="blanc/index.html"></div>
+    <div class="hero-slide" style="background-image:url('assets/images/megurino/hero-4.png');" data-href="megurino/index.html"></div>
+    <div class="hero-slide" style="background-image:url('assets/images/logs-sauna/hero-4.png');" data-href="logs-sauna/index.html"></div>
+    <div class="hero-slide" style="background-image:url('assets/images/mera/hero-4.jpg');" data-href="mera/index.html"></div>
+    <div class="hero-slide" style="background-image:url('assets/images/blanc/hero-5.png');" data-href="blanc/index.html"></div>
+    <div class="hero-slide" style="background-image:url('assets/images/megurino/hero-5.png');" data-href="megurino/index.html"></div>
+  </div>
+  <div class="hero-overlay"></div>
   <div class="hero-content">
     <p class="hero-label">Select Innovation Co., Ltd.</p>
     <h1 class="hero-title">The Art of<br><em>Living Well</em></h1>
     <p class="hero-sub">日常の先にある、特別な時間のために。</p>
     <div class="hero-cta">
-      <a href="blanc/index.html" class="btn btn-primary">製品を見る</a>
+      <a href="blanc/index.html" id="heroProductBtn" class="btn btn-primary">製品を見る</a>
       <a href="contact/index.html" class="btn btn-outline">お問い合わせ</a>
     </div>
   </div>
+  <div class="hero-dots" id="heroDots"></div>
   <div class="hero-scroll">
     <span>Scroll</span>
     <div class="scroll-line"></div>
@@ -237,5 +271,38 @@
 </footer>
 
 <script src="assets/js/main.js"></script>
+<script>
+  // ホームヒーロー：4ブランドの全画像を交互に表示し、製品を見るボタンを現在のブランドに連動
+  (function () {
+    var slides = Array.prototype.slice.call(document.querySelectorAll('#heroSlider .hero-slide'));
+    var dotsWrap = document.getElementById('heroDots');
+    var productBtn = document.getElementById('heroProductBtn');
+    if (!slides.length) return;
+    var cur = 0;
+
+    var dots = slides.map(function (_, i) {
+      var d = document.createElement('button');
+      d.className = 'hero-dot' + (i === 0 ? ' active' : '');
+      d.setAttribute('aria-label', (i + 1) + '枚目を表示');
+      d.addEventListener('click', function () { show(i); reset(); });
+      dotsWrap.appendChild(d);
+      return d;
+    });
+
+    function show(i) {
+      slides[cur].classList.remove('active');
+      dots[cur].classList.remove('active');
+      cur = (i + slides.length) % slides.length;
+      slides[cur].classList.add('active');
+      dots[cur].classList.add('active');
+      var href = slides[cur].getAttribute('data-href');
+      if (href && productBtn) productBtn.setAttribute('href', href);
+    }
+
+    var timer;
+    function reset() { clearInterval(timer); timer = setInterval(function () { show(cur + 1); }, 5000); }
+    reset();
+  })();
+</script>
 </body>
 </html>
