@@ -29,6 +29,25 @@
       .hero-dots { right:16px; bottom:14px; max-width:90%; }
     }
 
+    /* PRODUCTS（Harvia風 2カラム） */
+    .products-h { padding:110px 0; background:#fff; }
+    .products-h-head { text-align:center; max-width:760px; margin:0 auto 56px; }
+    .products-h-label { font-family:var(--font-en); font-size:11px; letter-spacing:0.4em; text-transform:uppercase; color:var(--color-accent); margin-bottom:16px; }
+    .products-h-title { font-family:var(--font-serif); font-size:clamp(28px,4vw,40px); font-weight:300; color:var(--color-text); margin-bottom:18px; }
+    .products-h-intro { font-size:14px; color:var(--color-muted); line-height:2; }
+    .products-h-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:28px; }
+    .product-h-card { display:block; text-decoration:none; }
+    .product-h-figure { position:relative; overflow:hidden; }
+    .product-h-figure img { width:100%; aspect-ratio:16/9; object-fit:cover; display:block; transition:transform .7s cubic-bezier(0.25,0.46,0.45,0.94); }
+    .product-h-figure::after { content:''; position:absolute; inset:0; background:linear-gradient(to bottom, rgba(0,0,0,0.30), transparent 45%); }
+    .product-h-card:hover .product-h-figure img { transform:scale(1.06); }
+    .product-h-cat { position:absolute; top:22px; left:24px; z-index:2; color:#fff; font-family:var(--font-en); font-size:12px; letter-spacing:0.22em; text-transform:uppercase; text-shadow:0 1px 8px rgba(0,0,0,0.5); }
+    .product-h-body { display:flex; align-items:center; justify-content:space-between; padding:20px 4px 0; }
+    .product-h-name { font-family:var(--font-serif); font-size:22px; font-weight:300; color:var(--color-text); letter-spacing:0.04em; }
+    .product-h-more { font-family:var(--font-en); font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--color-accent); transition:gap .3s; }
+    .product-h-card.span2 { grid-column:1 / -1; }
+    @media (max-width:768px){ .products-h-grid { grid-template-columns:1fr; } }
+
     .works { padding:120px 0 130px; overflow:hidden; }
     .works-marquee { overflow:hidden; width:100%;
       -webkit-mask-image:linear-gradient(to right, transparent, #000 7%, #000 93%, transparent);
@@ -109,6 +128,39 @@
   <div class="hero-scroll">
     <span>Scroll</span>
     <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- PRODUCTS（Harvia風） -->
+<section class="products-h">
+  <div class="container">
+    <div class="products-h-head reveal">
+      <p class="products-h-label">Products</p>
+      <h2 class="products-h-title">製品ラインアップ</h2>
+      <p class="products-h-intro">ワンランク上のライフスタイルを叶える、SENSEの厳選プロダクト。</p>
+    </div>
+    <div class="products-h-grid">
+      <a href="blanc/index.html" class="product-h-card reveal">
+        <div class="product-h-figure"><span class="product-h-cat">Luxury Jacuzzi</span><img src="assets/images/blanc/hero-1.png" alt="blanc"></div>
+        <div class="product-h-body"><span class="product-h-name">blanc</span><span class="product-h-more">View More →</span></div>
+      </a>
+      <a href="megurino/index.html" class="product-h-card reveal">
+        <div class="product-h-figure"><span class="product-h-cat">Private Sauna</span><img src="assets/images/megurino/hero-1.png" alt="megurino"></div>
+        <div class="product-h-body"><span class="product-h-name">megurino</span><span class="product-h-more">View More →</span></div>
+      </a>
+      <a href="logs-sauna/index.html" class="product-h-card reveal">
+        <div class="product-h-figure"><span class="product-h-cat">Barrel Sauna</span><img src="assets/images/logs-sauna/hero-1.jpg" alt="LOGS SAUNA"></div>
+        <div class="product-h-body"><span class="product-h-name">LOGS SAUNA</span><span class="product-h-more">View More →</span></div>
+      </a>
+      <a href="mera/index.html" class="product-h-card reveal">
+        <div class="product-h-figure"><span class="product-h-cat">Outdoor Firepit</span><img src="assets/images/mera/hero-1.png" alt="mera"></div>
+        <div class="product-h-body"><span class="product-h-name">mera</span><span class="product-h-more">View More →</span></div>
+      </a>
+      <a href="other/index.html" class="product-h-card span2 reveal">
+        <div class="product-h-figure"><span class="product-h-cat">Other Products</span><img src="assets/images/xxcia-dome/hero-1.jpg" alt="Other"></div>
+        <div class="product-h-body"><span class="product-h-name">Other</span><span class="product-h-more">View More →</span></div>
+      </a>
+    </div>
   </div>
 </section>
 
