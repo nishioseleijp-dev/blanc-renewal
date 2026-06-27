@@ -355,15 +355,35 @@
 </div>
 
 <!-- ページヒーロー スライダー -->
-<section class="page-hero">
-  <div class="page-hero-bg"></div>
-  <div class="container">
+<section class="page-hero" style="height:100vh; min-height:600px;">
+  <div class="hero-slider">
+    <div class="hero-slide active" data-theme="dark"  style="background-image:url('../assets/images/blanc/hero-1.png');"></div>
+    <div class="hero-slide"        data-theme="light" style="background-image:url('../assets/images/blanc/hero-2.png');"></div>
+    <div class="hero-slide"        data-theme="light" style="background-image:url('../assets/images/blanc/hero-3.png');"></div>
+    <div class="hero-slide"        data-theme="light" style="background-image:url('../assets/images/blanc/hero-4.png');"></div>
+    <div class="hero-slide"        data-theme="light" style="background-image:url('../assets/images/blanc/hero-5.png');"></div>
+  </div>
+
+  <div class="container hero-content-area hero-theme-dark" style="position:relative; z-index:1; height:100%; display:flex; align-items:flex-end; padding-bottom:120px;">
     <div class="page-hero-content">
       <p class="page-hero-label">Luxury Jacuzzi</p>
       <h1 class="page-hero-title">blanc</h1>
       <p class="page-hero-sub">光と水と静寂が溶け合う、<br>ワンランク上のバス体験へ。</p>
     </div>
   </div>
+
+  <button class="hero-arrow hero-arrow-prev" aria-label="前へ">&#8592;</button>
+  <button class="hero-arrow hero-arrow-next" aria-label="次へ">&#8594;</button>
+
+  <div class="hero-dots">
+    <button class="hero-dot active" data-index="0"></button>
+    <button class="hero-dot" data-index="1"></button>
+    <button class="hero-dot" data-index="2"></button>
+    <button class="hero-dot" data-index="3"></button>
+    <button class="hero-dot" data-index="4"></button>
+  </div>
+
+  <div class="hero-progress" id="heroProgress"></div>
 </section>
 
 <!-- ブランドコンセプト -->
