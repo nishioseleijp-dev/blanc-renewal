@@ -96,10 +96,10 @@
     </div>
   </div>
   <div class="hero-content">
-    <p class="hero-label">Select Innovation Co., Ltd.</p>
-    <h1 class="hero-title">The Art of<br><em>Living Well</em></h1>
+    <p class="hero-label" id="heroLabel">Luxury Jacuzzi</p>
+    <h1 class="hero-title" id="heroTitle">blanc</h1>
     <div class="hero-divider"></div>
-    <p class="hero-sub">日常の先にある、特別な時間のために。</p>
+    <p class="hero-sub" id="heroSub">光と水と静寂が溶け合う、<br>ワンランク上のバス体験へ。</p>
     <div class="hero-cta">
       <a href="blanc/index.html" id="heroProductBtn" class="btn btn-primary">製品を見る</a>
       <a href="contact/index.html" class="btn btn-outline">お問い合わせ</a>
@@ -276,8 +276,18 @@
     var slides = Array.prototype.slice.call(document.querySelectorAll('#heroSlider .hero-slide'));
     var dotsWrap = document.getElementById('heroDots');
     var productBtn = document.getElementById('heroProductBtn');
+    var labelEl = document.getElementById('heroLabel');
+    var titleEl = document.getElementById('heroTitle');
+    var subEl = document.getElementById('heroSub');
     if (!slides.length || !track) return;
     var cur = 0;
+
+    var brandInfo = {
+      'blanc/index.html':      { label:'Luxury Jacuzzi',  title:'blanc',      sub:'光と水と静寂が溶け合う、<br>ワンランク上のバス体験へ。' },
+      'megurino/index.html':   { label:'Private Sauna',   title:'megurino',   sub:'体の芯まで「巡る」体験。<br>完全プライベートな、究極の発汗空間。' },
+      'logs-sauna/index.html': { label:'Barrel Sauna',    title:'LOGS SAUNA', sub:'遊び心を持った大人の、<br>新しいサウナという選択。' },
+      'mera/index.html':       { label:'Outdoor Firepit', title:'mera',       sub:'炎のゆらぎが、心に<br>贅沢な「余白」をもたらす。' }
+    };
 
     var dots = slides.map(function (_, i) {
       var d = document.createElement('button');
@@ -295,6 +305,12 @@
       track.style.transform = 'translateX(-' + (cur * 100) + '%)';
       var href = slides[cur].getAttribute('data-href');
       if (href && productBtn) productBtn.setAttribute('href', href);
+      var info = brandInfo[href];
+      if (info) {
+        if (labelEl) labelEl.textContent = info.label;
+        if (titleEl) titleEl.innerHTML = info.title;
+        if (subEl)   subEl.innerHTML = info.sub;
+      }
     }
 
     var timer;
