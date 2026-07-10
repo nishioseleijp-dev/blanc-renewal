@@ -1110,56 +1110,6 @@
   });
 </script>
 <script>
-  (function () {
-    const slides      = document.querySelectorAll('.hero-slide');
-    const dots        = document.querySelectorAll('.hero-dot');
-    const prev        = document.querySelector('.hero-arrow-prev');
-    const next        = document.querySelector('.hero-arrow-next');
-    const bar         = document.getElementById('heroProgress');
-    const contentArea = document.querySelector('.hero-content-area');
-    let current = 0;
-    let timer;
-
-    function applyTheme() {
-      const theme = slides[current].dataset.theme || 'light';
-      contentArea.classList.remove('hero-theme-light', 'hero-theme-dark');
-      contentArea.classList.add('hero-theme-' + theme);
-    }
-
-    function goTo(n) {
-      slides[current].classList.remove('active');
-      dots[current].classList.remove('active');
-      current = (n + slides.length) % slides.length;
-      slides[current].classList.add('active');
-      dots[current].classList.add('active');
-      applyTheme();
-      resetBar();
-    }
-
-    function resetBar() {
-      bar.classList.remove('running');
-      bar.style.width = '0%';
-      void bar.offsetWidth;
-      bar.classList.add('running');
-    }
-
-    function startAuto() {
-      clearInterval(timer);
-      timer = setInterval(() => goTo(current + 1), 5000);
-    }
-
-    dots.forEach(dot => {
-      dot.addEventListener('click', () => { goTo(+dot.dataset.index); startAuto(); });
-    });
-    prev.addEventListener('click', () => { goTo(current - 1); startAuto(); });
-    next.addEventListener('click', () => { goTo(current + 1); startAuto(); });
-
-    applyTheme();
-    resetBar();
-    startAuto();
-  })();
-</script>
-<script>
   // 水栓スライダー（各カード独立）
   document.querySelectorAll('.faucet-card').forEach(function(card) {
     const imgs = card.querySelectorAll('.faucet-slide-img');

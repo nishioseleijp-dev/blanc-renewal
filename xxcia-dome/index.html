@@ -236,43 +236,5 @@
   </div>
 </footer>
 <script src="../assets/js/main.js"></script>
-<script>
-  (function () {
-    const slides      = document.querySelectorAll('.hero-slide');
-    const dots        = document.querySelectorAll('.hero-dot');
-    const prev        = document.querySelector('.hero-arrow-prev');
-    const next        = document.querySelector('.hero-arrow-next');
-    const bar         = document.getElementById('xxciaHeroProgress');
-    const contentArea = document.querySelector('.hero-content-area');
-    let current = 0, timer;
-    function applyTheme() {
-      const theme = slides[current].dataset.theme || 'dark';
-      contentArea.classList.remove('hero-theme-light', 'hero-theme-dark');
-      contentArea.classList.add('hero-theme-' + theme);
-    }
-    function goTo(n) {
-      slides[current].classList.remove('active');
-      dots[current].classList.remove('active');
-      current = (n + slides.length) % slides.length;
-      slides[current].classList.add('active');
-      dots[current].classList.add('active');
-      applyTheme(); resetBar();
-    }
-    function resetBar() {
-      bar.classList.remove('running');
-      bar.style.width = '0%';
-      void bar.offsetWidth;
-      bar.classList.add('running');
-    }
-    function startAuto() {
-      clearInterval(timer);
-      timer = setInterval(() => goTo(current + 1), 5000);
-    }
-    dots.forEach(d => d.addEventListener('click', () => { goTo(+d.dataset.index); startAuto(); }));
-    prev.addEventListener('click', () => { goTo(current - 1); startAuto(); });
-    next.addEventListener('click', () => { goTo(current + 1); startAuto(); });
-    applyTheme(); resetBar(); startAuto();
-  })();
-</script>
 </body>
 </html>
