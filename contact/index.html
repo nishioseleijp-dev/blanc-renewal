@@ -91,6 +91,29 @@
               <option>その他</option>
             </select>
           </div>
+          <div class="form-group">
+            <div id="brandProductGrid" style="display:grid; grid-template-columns:1fr; gap:16px; align-items:start;">
+              <div>
+                <label class="form-label">ブランド</label>
+                <select class="form-control" id="brandSelect">
+                  <option value="">選択してください</option>
+                  <option value="blanc">blanc</option>
+                  <option value="megurino">megurino</option>
+                  <option value="logs-sauna">LOGS SAUNA</option>
+                  <option value="mera">mera</option>
+                  <option value="qbe">Q.be</option>
+                  <option value="xxcia">XXCIA DOME</option>
+                  <option value="other">その他</option>
+                </select>
+              </div>
+              <div id="productField" style="display:none;">
+                <label class="form-label">商品</label>
+                <select class="form-control" id="productSelect">
+                  <option value="">商品を選択してください</option>
+                </select>
+              </div>
+            </div>
+          </div>
           <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
             <div class="form-group">
               <label class="form-label">会社名</label>
@@ -164,5 +187,75 @@
   </div>
 </footer>
 <script src="../assets/js/main.js"></script>
+<script>
+  // ブランド選択 → blanc / mera のとき商品選択を横に表示
+  (function () {
+    var brand = document.getElementById('brandSelect');
+    var grid  = document.getElementById('brandProductGrid');
+    var field = document.getElementById('productField');
+    var prod  = document.getElementById('productSelect');
+    if (!brand || !prod) return;
+
+    var placeholder = '<option value="">商品を選択してください</option>';
+    var products = {
+      blanc: placeholder +
+        '<optgroup label="Clarte">' +
+          '<option>Bourges ブールジュ</option>' +
+          '<option>Douai ドゥエー</option>' +
+          '<option>Metz メッス</option>' +
+          '<option>Valence ヴァランス</option>' +
+        '</optgroup>' +
+        '<optgroup label="Opaline">' +
+          '<option>Antibes アンティーブ</option>' +
+          '<option>Bastia バスティア</option>' +
+          '<option>Dunkerque Carré ダンケルク-カレ</option>' +
+          '<option>Dunkerque Ovale ダンケルク-オーバル</option>' +
+          '<option>Nantes ナント</option>' +
+          '<option>Rouen ルーアン</option>' +
+          '<option>Toulon トゥーロン</option>' +
+        '</optgroup>' +
+        '<optgroup label="Horizon">' +
+          '<option>Anglet アングレット</option>' +
+          '<option>Cergy セルジー</option>' +
+          '<option>Épinal エピナル</option>' +
+          '<option>Maubeuge モブージュ</option>' +
+          '<option>Niort ニオール</option>' +
+          '<option>Sarcelles サルセル</option>' +
+          '<option>Troyes トロワ</option>' +
+        '</optgroup>' +
+        '<optgroup label="Soleil">' +
+          '<option>Arles アルル</option>' +
+          '<option>Chelles シェル</option>' +
+          '<option>Niort ニオール（Soleil）</option>' +
+        '</optgroup>',
+      mera: placeholder +
+        '<optgroup label="サークル">' +
+          '<option>CIR901</option>' +
+          '<option>CIR001</option>' +
+        '</optgroup>' +
+        '<optgroup label="カレ">' +
+          '<option>CAR008</option>' +
+          '<option>CAR218</option>' +
+        '</optgroup>' +
+        '<optgroup label="レクタングル">' +
+          '<option>REC013</option>' +
+          '<option>REC216</option>' +
+        '</optgroup>'
+    };
+
+    brand.addEventListener('change', function () {
+      var set = products[brand.value];
+      if (set) {
+        prod.innerHTML = set;
+        field.style.display = '';
+        grid.style.gridTemplateColumns = '1fr 1fr';
+      } else {
+        field.style.display = 'none';
+        grid.style.gridTemplateColumns = '1fr';
+        prod.innerHTML = placeholder;
+      }
+    });
+  })();
+</script>
 </body>
 </html>
