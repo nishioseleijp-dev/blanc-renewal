@@ -101,9 +101,7 @@
                   <option value="megurino">megurino</option>
                   <option value="logs-sauna">LOGS SAUNA</option>
                   <option value="mera">mera</option>
-                  <option value="qbe">Q.be</option>
-                  <option value="xxcia">XXCIA DOME</option>
-                  <option value="other">その他</option>
+                  <option value="other">Other</option>
                 </select>
               </div>
               <div id="productField" style="display:none;">
@@ -240,7 +238,11 @@
         '<optgroup label="レクタングル">' +
           '<option>REC013</option>' +
           '<option>REC216</option>' +
-        '</optgroup>'
+        '</optgroup>',
+      other: placeholder +
+        '<option>Q.be（キューブ）</option>' +
+        '<option>XXCIA DOME（エクシアドーム）</option>' +
+        '<option>その他</option>'
     };
 
     brand.addEventListener('change', function () {
