@@ -19,6 +19,9 @@
     .hero-has-slider .hero-title { color:var(--color-text); }
     .hero-has-slider .hero-divider { width:140px; height:1px; background:var(--color-border); margin:40px 0 26px; opacity:0; animation:fadeUp 1s 0.8s forwards; }
     .hero-has-slider .hero-cta { justify-content:flex-start; margin-top:44px; }
+    /* 白背景の左パネル上でも待機時から視認できるように */
+    .hero-has-slider .btn-outline { color:var(--color-text); border-color:var(--color-border); }
+    .hero-has-slider .btn-outline:hover { color:var(--color-accent); border-color:var(--color-accent); }
     .hero-has-slider .hero-scroll { display:none; }
     .hero-dots { position:absolute; bottom:28px; right:32px; left:auto; transform:none; display:flex; gap:9px; z-index:3; flex-wrap:wrap; max-width:55%; justify-content:flex-end; }
     .hero-dot { width:8px; height:8px; border-radius:50%; border:none; background:rgba(255,255,255,0.55); cursor:pointer; padding:0; transition:all .3s; }
